@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
 ---
 
 <Layout 
@@ -20,7 +22,15 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="about-content__grid">
         <div class="about-content__image">
-          <img src="/images/dr-zhang-headshot.jpg" alt="Dr. Li Zhang, Licensed Acupuncturist" />
+          <Image
+            src={drZhangHeadshot}
+            alt="Dr. Li Zhang, Licensed Acupuncturist"
+            width={600}
+            height={600}
+            loading="eager"
+            format="webp"
+            quality={85}
+          />
         </div>
         <div class="about-content__text">
           <h2>A Lifetime of Healing</h2>

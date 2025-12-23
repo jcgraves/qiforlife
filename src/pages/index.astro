@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import officeInterior from '../images/office-interior.jpg';
+import waitingRoom from '../images/waiting-room.jpg';
+import drZhangFull from '../images/dr-zhang-full.jpg';
 ---
 
 <Layout 
@@ -9,7 +13,16 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero__background">
-      <img src="/images/waiting-room.jpg" alt="Qi For Life Acupuncture waiting room" class="hero__image" />
+      <Image
+        src={waitingRoom}
+        alt="Qi For Life Acupuncture waiting room"
+        width={1920}
+        height={1080}
+        loading="eager"
+        format="webp"
+        quality={85}
+        class="hero__image"
+      />
       <div class="hero__overlay"></div>
     </div>
     <div class="hero__content container">
@@ -25,7 +38,15 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
       <div class="hero__portrait">
-        <img src="/images/dr-zhang-full.jpg" alt="Dr. Li Zhang, Licensed Acupuncturist" />
+        <Image
+          src={drZhangFull}
+          alt="Dr. Li Zhang, Licensed Acupuncturist"
+          width={600}
+          height={800}
+          loading="eager"
+          format="webp"
+          quality={85}
+        />
       </div>
     </div>
   </section>
@@ -144,7 +165,15 @@ import Layout from '../layouts/Layout.astro';
           <a href="/contact" class="btn btn--secondary">Visit Our Clinic</a>
         </div>
         <div class="office__image">
-          <img src="/images/office-interior.jpg" alt="Qi For Life Acupuncture clinic interior" />
+          <Image
+            src={officeInterior}
+            alt="Qi For Life Acupuncture clinic interior"
+            width={800}
+            height={600}
+            loading="lazy"
+            format="webp"
+            quality={80}
+          />
         </div>
       </div>
     </div>

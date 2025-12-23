@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import officeInterior from '../images/office-interior.jpg';
+import waitingRoom from '../images/waiting-room.jpg';
 ---
 
 <Layout 
@@ -148,8 +151,24 @@ import Layout from '../layouts/Layout.astro';
         <h2>A Healing Environment</h2>
       </div>
       <div class="office-gallery">
-        <img src="/images/waiting-room.jpg" alt="Qi For Life Acupuncture waiting room" />
-        <img src="/images/office-interior.jpg" alt="Qi For Life Acupuncture clinic interior" />
+        <Image
+          src={waitingRoom}
+          alt="Qi For Life Acupuncture waiting room"
+          width={800}
+          height={600}
+          loading="lazy"
+          format="webp"
+          quality={80}
+        />
+        <Image
+          src={officeInterior}
+          alt="Qi For Life Acupuncture clinic interior"
+          width={800}
+          height={600}
+          loading="lazy"
+          format="webp"
+          quality={80}
+        />
       </div>
     </div>
   </section>
