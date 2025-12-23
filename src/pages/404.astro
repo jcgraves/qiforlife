@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Page Not Found" 
+  description="The page you're looking for could not be found. Return to Qi For Life Acupuncture homepage."
+>
+  <section class="error-page">
+    <div class="container text-center">
+      <span class="error-code">404</span>
+      <h1>Page Not Found</h1>
+      <p>
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a href="/" class="btn btn--primary">Return Home</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl) 0;
+  }
+  
+  .error-code {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 400;
+    color: var(--color-sage-light);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .error-page h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .error-page p {
+    color: var(--color-warm-gray);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+  }
+</style>

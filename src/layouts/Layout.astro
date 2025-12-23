@@ -1,0 +1,111 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description, 
+  canonicalURL = Astro.url.href 
+} = Astro.props;
+
+const siteName = "Qi For Life Acupuncture";
+const fullTitle = title === "Home" ? `${siteName} | Brentwood, TN` : `${title} | ${siteName}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Dr. Li Zhang" />
+    
+    <!-- SEO Meta Tags -->
+    <title>{fullTitle}</title>
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/dr-zhang-full.jpg" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/dr-zhang-full.jpg" />
+    
+    <!-- Geo Tags for Local SEO -->
+    <meta name="geo.region" content="US-TN" />
+    <meta name="geo.placename" content="Brentwood" />
+    <meta name="geo.position" content="35.9955;-86.7897" />
+    <meta name="ICBM" content="35.9955, -86.7897" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Schema.org Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "Qi For Life Acupuncture Clinic",
+        "image": "/images/dr-zhang-full.jpg",
+        "url": "https://www.qiforlifeacupuncture.com",
+        "telephone": "615-336-3132",
+        "email": "drzhang@qiforlife.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1804 Williamson Court Suite 103",
+          "addressLocality": "Brentwood",
+          "addressRegion": "TN",
+          "postalCode": "37027",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 35.9955,
+          "longitude": -86.7897
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "16:00"
+        },
+        "priceRange": "$$",
+        "medicalSpecialty": "Acupuncture",
+        "founder": {
+          "@type": "Person",
+          "name": "Dr. Li Zhang",
+          "jobTitle": "Licensed Acupuncturist",
+          "honorificPrefix": "Dr.",
+          "description": "Licensed acupuncturist with over 30 years of education and experience"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

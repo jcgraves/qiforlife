@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Contact" 
+  description="Schedule your acupuncture appointment with Dr. Li Zhang in Brentwood, TN. Call 615-336-3132 or email drzhang@qiforlife.com. Located at 1804 Williamson Court Suite 103."
+>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Get in Touch</span>
+      <h1>Contact</h1>
+      <p class="page-hero__subtitle">Schedule Your First Session</p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="contact-main section section--white">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Visit Our Clinic</h2>
+          <div class="divider divider--left"></div>
+          <p class="contact-info__intro">
+            We see patients by appointment only. Please call or email to schedule your first consultation.
+          </p>
+          
+          <div class="contact-details">
+            <div class="contact-detail">
+              <h3>Location</h3>
+              <address>
+                1804 Williamson Court<br />
+                Suite 103<br />
+                Brentwood, TN 37027
+              </address>
+            </div>
+            
+            <div class="contact-detail">
+              <h3>Phone</h3>
+              <p><a href="tel:+16153363132">615-336-3132</a></p>
+            </div>
+            
+            <div class="contact-detail">
+              <h3>Email</h3>
+              <p><a href="mailto:drzhang@qiforlife.com">drzhang@qiforlife.com</a></p>
+            </div>
+            
+            <div class="contact-detail">
+              <h3>Hours</h3>
+              <p class="hours-note">By Appointment Only</p>
+              <ul class="hours-list">
+                <li><span>Tuesday - Saturday</span><span>8am - 4pm</span></li>
+                <li><span>Sunday - Monday</span><span>Closed</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h2>Request an Appointment</h2>
+          <div class="divider divider--left"></div>
+          <p class="contact-form__intro">
+            Fill out the form below and we'll contact you to confirm your appointment.
+          </p>
+          
+          <form class="contact-form" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="appointment" />
+            <p class="hidden" style="display: none;">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required />
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="visitType">Type of Visit</label>
+              <select id="visitType" name="visitType">
+                <option value="">Select one...</option>
+                <option value="new">New Patient Consultation</option>
+                <option value="followup">Follow-Up Appointment</option>
+                <option value="question">General Inquiry</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="concern">Primary Health Concern</label>
+              <textarea id="concern" name="concern" rows="4" placeholder="Please briefly describe your primary health concern or reason for visit..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="preferredContact">Preferred Contact Method</label>
+              <select id="preferredContact" name="preferredContact">
+                <option value="phone">Phone</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn--primary">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3226.5!2d-86.7897!3d35.9955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864665c6c6f6c67%3A0x1234567890abcdef!2s1804%20Williamson%20Ct%2C%20Brentwood%2C%20TN%2037027!5e0!3m2!1sen!2sus!4v1234567890"
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Qi For Life Acupuncture Clinic Location">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Office Images -->
+  <section class="office-images section section--cream">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Our Space</span>
+        <h2>A Healing Environment</h2>
+      </div>
+      <div class="office-gallery">
+        <img src="/images/waiting-room.jpg" alt="Qi For Life Acupuncture waiting room" />
+        <img src="/images/office-interior.jpg" alt="Qi For Life Acupuncture clinic interior" />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    background-color: var(--color-charcoal);
+    color: var(--color-warm-white);
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    color: var(--color-warm-white);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .page-hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-3xl);
+  }
+  
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+  
+  /* Contact Info */
+  .contact-info h2,
+  .contact-form-wrapper h2 {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .contact-info__intro,
+  .contact-form__intro {
+    color: var(--color-warm-gray);
+    margin-bottom: var(--space-xl);
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .contact-detail h3 {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .contact-detail address {
+    font-style: normal;
+    color: var(--color-charcoal);
+    line-height: 1.7;
+  }
+  
+  .contact-detail p {
+    margin: 0;
+  }
+  
+  .contact-detail a {
+    color: var(--color-charcoal);
+    font-weight: 500;
+  }
+  
+  .contact-detail a:hover {
+    color: var(--color-burgundy);
+  }
+  
+  .hours-note {
+    font-style: italic;
+    color: var(--color-sage-dark);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(44, 62, 45, 0.1);
+    max-width: 250px;
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    background: var(--color-cream);
+    padding: var(--space-xl);
+    border-radius: 4px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+  
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--color-charcoal);
+  }
+  
+  .required {
+    color: var(--color-burgundy);
+  }
+  
+  .contact-form .btn {
+    width: 100%;
+    margin-top: var(--space-sm);
+  }
+  
+  /* Map Section */
+  .map-section {
+    background: var(--color-charcoal);
+  }
+  
+  .map-container {
+    height: 400px;
+  }
+  
+  .map-container iframe {
+    display: block;
+  }
+  
+  /* Office Gallery */
+  .office-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .office-gallery img {
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 640px) {
+    .office-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

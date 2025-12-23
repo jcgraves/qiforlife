@@ -1,0 +1,519 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Testimonials organized by category
+const testimonials = {
+  featured: [
+    {
+      name: "Jack R.",
+      excerpt: "She has helped my neuropathy immensely to the point I no longer have pain in my hands and feet...",
+      content: `In my three years of coming to the clinic to see Dr. Zhang, she has always been kind and compassionate. Also during my hard time, she has helped my neuropathy immensely to the point I no longer have pain in my hands and feet and have only a small amount of residual numbness in my toes. She also has greatly helped my immune system as I fight a (currently) incurable form of cancer. The oncologists have marveled at how well I responded to the last treatment, but it is no coincidence that she was treating me with acupuncture throughout the treatment. I do not say thank her enough, but I am forever grateful to her. God has given her a sharp mind, unique healing skills, a kind heart, and a servant attitude. I hope she never tires of helping others.`
+    },
+    {
+      name: "Sadira",
+      excerpt: "She is one of the best acupuncturists in the United States... Over the past 15 years, I have referred hundreds of people to her.",
+      content: `I have known Dr. Zhang since 2008. She is one of the best acupuncturists in the United States and also a medical doctor in China, coming from a lineage of third-generation acupuncturists. She has helped me manage work-related stress, allergies, insomnia, asthma, hives, and even assisted me in getting pregnant. Over the past 15 years, I have referred hundreds of people to her, and all have been highly satisfied. Thanks to her expertise, six of my friends have also successfully conceived. When I returned to see her after many years, she could understand my life situation and body just by taking my pulse and looking at my tongue. Her talent is truly remarkable, and she always encourages me to practice forgiveness. She is a gift to Middle Tennessee. We are blessed to have her.`
+    },
+    {
+      name: "Adrienne C.",
+      excerpt: "From those actions alone, she immediately told me that I was probably experiencing 8 out 10 of my symptoms!",
+      content: `I was referred to Dr. Li Zhang at Qi for Life by my massage therapist. I had always been interested in acupuncture, but the idea that poking little needles into my skin could be healthful was a bit of a stretch for me. What finally caused me to go was experiencing many symptoms over a long time that I couldn't easily attribute to a particular illness—things like fatigue, night sweats, weight gain. I finally wrote them down and there were 10 different symptoms. I decided to go to an internal medicine doctor for a physical. The doctor finished the checkup and told me that I was fine—nothing was wrong with me. She had no explanation for my symptoms other than to tell me sometimes we get these things.
+
+When I showed up to Dr. Zhang's office, she had me complete quite a bit of paperwork. I was more than a little skeptical and deliberately left off some information that might lead her to diagnose the symptoms I was having. I figured if she was for real, she would figure out my symptoms through the magic of acupuncture. When she showed me into her treatment room, the first thing she did was look at my nails, my tongue and then spent about 3-5 minutes feeling my pulse. From those actions alone, she immediately told me that I was probably experiencing 8 out 10 of my symptoms! Then, she asked key questions that directly related to those and the other 2 symptoms. I was almost in tears. How could she know??
+
+In terms of results, I have been going for regular treatment for 8 months. Most all of the symptoms have gone away. I can breathe like I haven't in years—so much so that I have started running again. My fatigue and night sweats are also gone. I had some numbness in my foot which is completely gone and I had had that numbness for several years! I will continue to go back as needed and have referred Dr. Zhang to most everyone I know. I was a skeptic but no more!`
+    }
+  ],
+  fertility: [
+    {
+      name: "Christine K.",
+      excerpt: "I was completely off fertility medication for 3 months and became pregnant all on my own with the help of acupuncture!",
+      content: `I was having fertility issues for over a year, and was at a local fertility clinic for about 7 months. Someone recommended that I try acupuncture along side my fertility treatments and highly recommended Dr. Zhang. After meeting with Dr. Zhang I was beyond impressed with her knowledge, and her compassion she has for her patients. I was becoming exhausted with my fertility clinic and after 3 failed IUI's Dr. Zhang suggested I give my body a break from fertility treatments and just do acupuncture for a little while. I trusted her more than any other doctor I had been working with and I took her advice. I was completely off fertility medication for 3 months and became pregnant all on my own with the help of acupuncture! Dr. Zhang worked with me all through my first trimester and continues to work with me through my second trimester as well. She is there for me every step of the way providing the best care possible, and for this being my first pregnancy, I am so thankful to have Dr. Zhang.`
+    },
+    {
+      name: "Danielle F.",
+      excerpt: "That one round of treatment in combination with her acupuncture blessed my husband and I with TWINS.",
+      content: `I started seeing Dr. Li Zhang in the midst of my fertility treatments. Prior to receiving treatment from her, I had three failed rounds of clomid, followed by 3 failed rounds of injections/IUI. My AMH levels are a 0.3 and my body was struggling to produce even one egg each round of injections as I haven't been ovulating on my own for years. I was losing faith and was willing to try anything. My doctors were even suggesting donor eggs since my egg quality was so low. I began my acupuncture before the 4th round. I followed Dr. Li's instructions and came twice a week religiously throughout my entire cycle. She provided a warm environment, confident guidance, and a service that despite my hatred for needles was surprisingly relaxing. That one round of treatment in combination with her acupuncture (which was the ONLY thing different from all the other rounds) blessed my husband and I with TWINS. I'm now 7 weeks pregnant with fraternal twins and believe whole heartedly that it would not have been possible without her.`
+    },
+    {
+      name: "Beck S.",
+      excerpt: "I got pregnant in the first IVF trying... the amazing thing is when I visited Dr. Zhang, she told me I would have a baby girl by touching my pulse.",
+      content: `I got a baby girl! I was trying to get pregnant for two years, never succeeded. My OBGYN suggested me to try IVF, but the infertility specialist doctor told me that my successful chance will be very low due to age and eggs quality, I was depressed. My friend asked me to try Dr. Zhang, she told me Dr. Zhang had helped her before. I made an appointment, Dr. Zhang touched my pulse, looked my tongue and asked me a bunch of questions, then she said she could help me. She asked me to get acupuncture treatments for six months before I did egg retrieval. I came once a week for six months, then started my IVF procedure and I got pregnant in the first IVF trying. I was so excited and the amazing thing is when I visited Dr. Zhang, she told me I would have a baby girl by touching my pulse, and my ultrasound showed I had a girl later.`
+    },
+    {
+      name: "April M.",
+      excerpt: "Within a month, we were pregnant! Dr. Zhang is a third-generation acupuncturist with a high success rate for treating infertility.",
+      content: `I went to Dr. Zhang for four months based on an initial recommendation by a friend with the primary presenting concern of infertility, along with seasonal allergies, decreased energy, and overall health. My husband and I received treatment from a local fertility clinic and tried to conceive for 3 years, with no success. Before turning to IVF as a last result, I decided to see Dr. Zhang. Even after the first appointment, I immediately felt better (general energy and relief from allergies). My overall Qi seemed to improve with each visit, and within a month, we were pregnant! Dr. Zhang is a third-generation acupuncturist with a high success rate for treating infertility. She certainly helped us, and I feel so much better overall! Highly recommend.`
+    },
+    {
+      name: "Agnes W.P.",
+      excerpt: "We conceived our child after only a couple of months of seeing Dr. Zhang.",
+      content: `Dr. Zhang is awesome! I first saw her a few years ago when my husband and I were trying to conceive. She is a very nice person. Personable, knowledgeable, informative, kind and gentle, very serious about her work, but at the same time has a sense of humor and is very easy to talk to. We conceived our child after only a couple of months of seeing Dr. Zhang. Our family has then moved out of state, and I have had a really difficult time trying to find another acupuncturist in my new state whose knowledge and skills could match the levels that Dr. Zhang possesses. I would highly recommend Dr. Zhang to anyone wanting to improve their health or deal with any medical issues. She is fantastic!`
+    },
+    {
+      name: "Silvia D.",
+      excerpt: "After like 7 months of treatments I am pregnant with my second baby.",
+      content: `I found Dr. Zhang online looking for a good acupuncturist. Since the first visit I felt very comfortable and she was able to treat several issues at the same time (migraine, fertility problem, night sweats, and some more). I started to see improvements right away. Now, after like 7 months of treatments I am pregnant with my second baby and I know I couldn't be in better hands. I wouldn't change Dr. Zhang for any other acupuncturist.`
+    }
+  ],
+  pain: [
+    {
+      name: "Kevin C.",
+      excerpt: "It's been several years and I can gladly say that I am no where near knee replacement surgery.",
+      content: `I can't say enough good things about Dr. Zhang. When I started going to her a few years ago I was pretty close to giving up on my knee and having knee replacement surgery. I was having a very difficult time walking with a lot of pain and stiffness. I was doing Supartz and cortisone shots a couple of times with diminishing effectiveness. Based on a recommendation from a friend I decided to give acupuncture a try. I was pretty skeptical but figured why not at least try it for a couple of months. The results have been fantastic. It's been several years and I can gladly say that I am no where near knee replacement surgery. My knees still get sore from time to time but the recovery time is much, much shorter. She made a believer out this skeptic, for sure!`
+    },
+    {
+      name: "Kevin C.",
+      excerpt: "After 6 months my knees felt better than they've felt in over 10 years... knee replacement surgery is not even a consideration any more.",
+      content: `I have been seeing Dr. Zhang for about 2 years now and the results have been nothing short of miraculous. I have had six knee surgeries over the years (4 on my left knee and 2 on my right). The build up of arthritis and the deterioration of the joints over the years left me where it was difficult to walk long distances or even to stand for long periods. Stairs were a challenge and any sort of running was out of the question. Stiffness/swelling and pain were just part of my daily routine.
+
+I had been going to an orthopedic knee doctor for several years to get cortisone and Hyaluronan injections every six months to ease the pain. The injections worked for a while but I had reached the point where I was seriously considering knee replacement surgery. Being only in my 50s I was reluctant to do knee replacement at such a "young" age. A friend who also has bad knees recommended I try acupuncture treatment with Dr. Zhang.
+
+Dr. Zhang did more than just treat my knees. She changed my diet and treated me for stress as well. It took a couple of months before my knees started to feel better but I noticed that I was sleeping better almost immediately. After 6 months my knees felt better than they've felt in over 10 years. I can now do almost anything I want to do, including even running for short distances. I can happily say that knee replacement surgery is not even a consideration any more. My knees feel great, my stress levels are much lower, and I sleep GREAT. I feel younger and healthier than ever.`
+    },
+    {
+      name: "Debbie K.",
+      excerpt: "I can now say that I am totally pain free and delighted with Dr. Zhang and my treatments.",
+      content: `I had chronic neck pain from a deteriorating disc in my neck and was actually referred to Dr. Zhang by my doctor when I resisted having my neck nerves deadened. I can now say that I am totally pain free and delighted with Dr. Zhang and my treatments.`
+    },
+    {
+      name: "Linda H.",
+      excerpt: "By the end of 15 weeks I was able to work in my garden and to clean my house without assistance.",
+      content: `Almost three years ago I had a terrible fall after a summer of physical therapy for Cervical Radiculopathy. I was in severe pain, could barely walk, with continuous back spasms. Both of my legs were bruised from my waist to mid calf. I couldn't tolerate any more pain. I had searched online for something to help me other than pain pills and muscle relaxers around the clock. I wanted to return to work, tend my garden and take care of my grandson.
+
+Dr. Li Zhang is a highly qualified OMD, who trained and taught in China. I met with Dr. Zhang who actually listened to my history and past medical treatments, medications, and most importantly my goals. After looking at my back and legs she agreed to work with me towards my goal of getting better without multiple pain medications. After 20 minutes on her table my back began to relax. I had several hours of needed relief. I returned to Dr. Zhang every week for 10 weeks. By the end of 15 weeks I was able to work in my garden and to clean my house without assistance. Soon thereafter returned to work and my hobbies. I continue to see Dr. Li Zhang every 2 weeks as this helps with my severe arthritis in my back and neck.`
+    },
+    {
+      name: "Mary W.",
+      excerpt: "By the end of the third month my bone spurs had gone down in size so much that it was visible to my family.",
+      content: `After 5 years of foot pain (caused by prominent bone spurs on the tops of my feet and compounded by arthritis), after seeing an orthopedic surgeon and a podiatrist, after wearing shoe inserts in all my shoes, after having ultrasound and physical therapy treatments, after rubbing expensive cream on my feet and taking over-the-counter and prescribed pain meds, and after being told that surgery was the answer to remove the bone spurs (that would involve 8 weeks in a wheelchair) I finally got smart! I made my first appointment with Dr. Zhang about 5 months ago.
+
+Dr. Zhang's credentials and Chinese training experience are impeccable and that experience and confidence from many years of practice made me feel comfortable on my first visit. In addition to the acupuncture, Dr. Zhang treated my bone spurs with Chinese Herbs and had some recommendations for an eating regimen. By the end of the third month my bone spurs had gone down in size so much that it was visible to my family. I began to wear something besides tennis shoes and I was able to be on my feet for many hours. I can now wear shoes that I have not been able to wear for many years comfortably. I am able to go up and down most stairways like an adult person instead of looking like a toddler.`
+    },
+    {
+      name: "Rachel M.",
+      excerpt: "After she needles me the stomach pains are gone. It is amazing!",
+      content: `Dr. Zhang is absolutely amazing! I have been seeing her for stomach pains. After she needles me they are gone. It is amazing! I also have shoulder problems. She needled my shoulder and it feels much better. She is a miracle worker. If you are looking for an acupuncturist, STOP looking! You already found one. Go see Dr. Zhang. I highly recommend her.`
+    }
+  ],
+  chronic: [
+    {
+      name: "Sandra S.",
+      excerpt: "I have Crohn's Disease and with her help I have been free of pain and debilitating medications for many years now.",
+      content: `Dr. Zhang is a talented healer who has literally changed my life! I have Crohn's Disease and with her help I have been free of pain and debilitating medications for many years now. Before seeing Dr. Zhang, I was sick with colds and viruses almost constantly. She has strengthened my immunity so that now I rarely, if ever, get sick. I would highly recommend Dr. Zhang to anyone who is seeking better health.`
+    },
+    {
+      name: "C.T.",
+      excerpt: "After years of trying traditional medicine and various diets, this is the only treatment plan that helped me with auto-immune issues.",
+      content: `Excellent experience with Dr. Li Zhang. I was referred by a family member and have since referred several other family, friends, and coworkers. After years of trying traditional medicine and various diets, this is the only treatment plan that helped me with auto-immune issues. Dr. Li Zhang has been very honest with me, and clearly explained that my treatment would take time to see results. I trusted her and began healing faster than anticipated. She has created a treatment plan just for me, not a general plan for every patient, and explained that everyone is different and will need various techniques and timeframes for different issues. What I initially thought of as a "last resort" will now be my first option when seeking for health solutions. I can't explain how it all works, but it has changed my life.`
+    },
+    {
+      name: "Martha W.",
+      excerpt: "Here I am two months later sleeping like a baby at night with no restless legs.",
+      content: `I have been a patient of Dr. Zhang for couple of months now. Having been diagnosed with restless leg syndrome, I was always tired from many sleepless nights. Not wanting to take medication for this with all its side effects, I came to Dr. Zhang for help. Here I am two months later sleeping like a baby at night with no restless legs. What she has done for me through acupuncture is truly amazing! With her quiet, personable, and caring manner, thorough knowledge of the human body, and ability to analyze your needs very quickly, she is a true miracle worker!`
+    },
+    {
+      name: "Stephanie W.",
+      excerpt: "Since beginning acupuncture & herb treatment, my hair is almost completely grown back!",
+      content: `I have had alopecia totalis (full hair loss on scalp) for over 15 years. I have had painful steroid shots in my scalp, contact sensitizers, shampoos, supplements—name it, I have tried them all. After years passed, I was resigned to having to wear wigs all of my life. Two of my close friends had both struggled with fertility issues & after visiting Dr. Zhang they both were able to get pregnant! I was sold. Dr. Zhang is a miracle worker! Not only is she one of the kindest people I know—she really knows her stuff! Since beginning acupuncture & herb treatment last December, my hair is almost completely grown back!!! I am so grateful to Dr. Zhang and I highly recommend her to anyone and everyone!!`
+    },
+    {
+      name: "Deborah Diane K.",
+      excerpt: "I would say do not wait until all other options are exhausted before going to Dr. Zhang, go to her first.",
+      content: `When I first began visiting Dr. Zhang several months ago, I had widespread moderate to severe pain over most of my body. I had two large nodes, one on each side of my left knee; each one about the size of a large orange. I could barely go up steps or at times walk without severe pain. I could not move my shoulders without severe pain. I had been diagnosed with fibromyalgia, but I did not want to take prescription medications due to side effects from them.
+
+The treatments were painful, but as she told me "no pain, no gain", and this was true, the pain was in passing, the results will last a lifetime. I will never forget one of her most telling statements to me that helped me to see what a wonderful, caring Dr. she is: She said, "my patients are my passion." Since I have been going to Dr. Zhang, the large nodes on my knees have disappeared, my shoulders are well and no pain on movement. My outlook is much more positive, my memory is better. My liver, kidneys and heart continue to heal. I would say do not wait until all other options are exhausted before going to Dr. Zhang, go to her first. You will never regret it, and you will be forever grateful for a Dr. who cares for her patients in the most deeply caring, compassionate, way possible.`
+    }
+  ],
+  allergies: [
+    {
+      name: "Melissa C.",
+      excerpt: "In my two years with Dr. Zhang, I not only feel phenomenal, but I've also received an insightful education on the beauty of eastern medicine.",
+      content: `I began seeing Dr. Zhang almost two years ago for chronic lung issues related to allergies. Her technique is different from the other acupuncture practices I've been to. Compassionate and a master in her craft, Dr. Zhang's approach to healing is less intrusive than western medicine and more sympathetic to the body's internal mechanisms to find its right balance. In my two years with Dr. Zhang, I not only feel phenomenal, but I've also received an insightful education on the beauty of eastern medicine and how it views the body. She is a master at her craft and understands the delicate interweaving of body and mind for holistic health.`
+    },
+    {
+      name: "Alison R.",
+      excerpt: "I felt better immediately after my first acupuncture treatment, and now, after about 4 months, I feel cured!!",
+      content: `I am the last person who thought they'd ever try acupuncture, but my allergies were so bad they were affecting my job. I had tried every western medical treatment—inhalers, pills, etc., and none worked. In fact, the side effects of all the drugs worsened my condition. I felt better immediately after my first acupuncture treatment, and now, after about 4 months, I feel cured!! It has been an amazing blessing for which I am very grateful. Dr. Zhang is a highly trained doctor, very punctual & precise—you rarely have to wait. She is excellent at diagnosing root causes, and she is a warm, caring individual.`
+    },
+    {
+      name: "Cindy G.",
+      excerpt: "The eye swelling of being outside this morning... the swelling is almost gone... thanks to you!!",
+      content: `Thank you Dr. Zhang! Just wanted to drop a note and tell you thank you. I so appreciate you, your wonderful skills, your knowledge. The care you give to me in helping me get my health back. Which is priceless. I also wanted you to know, that the eye swelling of being outside this morning... the swelling is almost gone... thanks to you!! Only a tiny bit swollen. In the past I would have been swollen and horrible sick for at least 4 to 5 days. Thank you!!!!! I am very very blessed to have found treatment with you and wanted you to know.`
+    }
+  ],
+  stress: [
+    {
+      name: "Page P.",
+      excerpt: "I am more relaxed, sleep better and overall have more energy.",
+      content: `Dr. Zhang is amazing! She is so caring and has helped me tremendously. I began seeing Dr. Zhang for anxiety after a friend recommended her to me, and I continue to see her for a variety of things. I was looking for natural cures rather than taking medication, and I am so happy to have found her. I am amazed at the progress I have made and it is all because of Dr. Zhang. I am more relaxed, sleep better and overall have more energy. Dr. Zhang truly cares about her patients and I highly recommend her for any health issues.`
+    },
+    {
+      name: "Deborah E.",
+      excerpt: "After seven treatments I have had tons of energy and I have been in the best mood, I'm sleeping like a baby at night.",
+      content: `I was on an antidepressant medication for about 4 years. I hadn't had a normal period in about 12 years. I was going through a tough time in my life and I was worrying way too much. It had gotten to a point that it was affecting everything I did. Worrying was consuming me. I wanted to find another way to help myself. I chose acupuncture after I did my research.
+
+After first time treatment I felt change in my energy level and my depression less, I am in better mood. After Dr. Zhang treated me three times I had my first very normal period last week and it lasted about 4 1/2 days, after seven treatments I have had tons of energy and I have been in the best mood, I'm sleeping like a baby at night. I feel amazing. And I've lost 5 pounds in 2 weeks! I'm telling you if you have anything that is bothering you physically or emotionally you should check out with Dr. Zhang. I'm paying to have it done, but remember I am medicine free now, and I'm feeling great. I thank God everyday for leading me to her!!! She's the best!`
+    },
+    {
+      name: "Michael W.",
+      excerpt: "She has treated and started to reverse a condition for which other doctors and medical professionals told me there isn't any lasting treatment.",
+      content: `Dr. Zhang is an exceedingly skilled practitioner of traditional Chinese medicine. The greater Nashville area is lucky to have her. She is a true master of this complete medical system. Dr. Zhang is able to rapidly reach a spot on diagnosis and know what treatment modality will work best for you: acupuncture, herbs, cupping, etc. As a patient, you're always at ease. She instills that sort of confidence.
+
+Better than all of that? She is one of the kindest and most thoughtful people you'll encounter. Dr. Zhang meets you and your health where you are. She cares and listens. She offers to help and goes out of her way to do so.
+
+I have been a patient of Dr. Zhang's for some time now. She has treated and started to reverse a condition for which other doctors and medical professionals told me there isn't any lasting treatment. But it hasn't been easy or simple to do so. Of course, Dr. Zhang told me from the outset things would take time but could be done. She gave me realistic expectations, not false hope. Now, many months after starting treatment, each day I'm grateful for Dr. Zhang and her caring, effective treatments which have improved my daily living dramatically.`
+    }
+  ],
+  general: [
+    {
+      name: "Petter F.",
+      excerpt: "There is no comparison to how I feel after a session with her compared to other acupuncturists that I have tried.",
+      content: `Dr. Zhang is the best Acupuncture doctor I have ever visited. She is a second generation Chinese doctor who has the background and knowledge that exceeds anyone else I have ever experienced; there is no comparison to how I feel after a session with her compared to other acupuncturists that I have tried. I leave feeling great! Dr. Zhang is a true healer! I recommend her to everyone I meet who is looking for an Acupuncturist.`
+    },
+    {
+      name: "Briana T.",
+      excerpt: "Love Dr. Li and her ability to understand my symptoms and continuously work with me to help me feel my best.",
+      content: `Best acupuncturist! Love Dr. Li and her ability to understand my symptoms and continuously work with me to help me feel my best.`
+    },
+    {
+      name: "Mimi S.",
+      excerpt: "She really takes the time to get to know your story and then works with you to help find relief.",
+      content: `Dr. Li Zhang is incredible and it is so evident she cares about her patients. She really takes the time to get to know your story and then works with you to help find relief for pain or any other health problems. Each visit she takes the time to really listen to see how you are doing after the last visit. She goes above and beyond to make sure her patients feel comfortable and cared for. The facility is always kept to the highest cleaning standard but she also creates an environment where the patient is really able to relax and rest. Her attention to patient care is what truly makes her exceptional. She is a blessing to our community!`
+    },
+    {
+      name: "Pam M.",
+      excerpt: "I felt some relief the first visit and it has steadily improved my level of pain.",
+      content: `Qi for Life is wonderful—Dr. Zhang is terrific. I had never gone to acupuncture before but after a year of back pain, doctors, chiropractors, and physical therapy, I was willing to give anything a try. I felt some relief the first visit and it has steadily improved my level of pain. I originally went weekly, and now have even skipped a few weeks. I have recommended Dr. Zhang to four different friends for all different reasons. Three of my friends have gone and have found it beneficial as well. Dr. Zhang herself is efficient, caring, and very eager for you to improve and move on. I have not felt pressure to "sign up" for x amount of visits, she seems to know it is an individual experience. I would highly recommend her to anyone.`
+    },
+    {
+      name: "Phoebe C.",
+      excerpt: "Her treatment isn't just temporary—it has changed my life in countless ways and the effects last for years.",
+      content: `Highly recommend Dr. Zhang! I've gone to her for a couple issues and both cleared up after a few treatments. Not only did the problems go away, but I felt more energetic, happier, calmer, and healthier than I had before. Her treatment isn't just temporary—it has changed my life in countless ways and the effects last for years. She is caring, compassionate, and the best at what she does. I've been to a couple acupuncturists, and there's no comparison. Dr. Zhang is the best.`
+    },
+    {
+      name: "Harriet W.",
+      excerpt: "This place has LITERALLY changed my life!!!! SO THANKFUL!",
+      content: `This place has LITERALLY changed my life!!!! SO THANKFUL!`
+    },
+    {
+      name: "Carol S.",
+      excerpt: "My husband told me this morning that he thought Dr. Zhang was right—that my skin did look better.",
+      content: `Dr. Zhang, you had mentioned to me that you thought my skin color was better since I've been getting my treatments. I mentioned that to my husband a week or so ago. From a man who doesn't say much about "looks" I was really excited when he told me this morning that he thought Dr. Zhang was right—that my skin did look better. It must look really better for him to notice and comment. So, thank you, for your marvelous talent to help people get better.`
+    },
+    {
+      name: "Alice M.D.",
+      excerpt: "I have found in her the wonderful ability to read and understand my body and my feelings.",
+      content: `How fortunate we are to have a medical professional available to us in Dr. Zhang. Most of us have experienced that all the training in the world, the brightest minds, do not necessarily possess and use understanding, compassion and intuition.
+
+Dr. Zhang learned the science and art of acupuncture from the Masters in China, the birthplace of acupuncture. She has been through medical school in China and believes that traditional western medicine and non traditional medicine can work hand in hand at different times and different ways for a variety of maladies.
+
+My personal experience with Dr. Zhang over the past 2½ years has been physically and emotionally rewarding. She has demonstrated time and again with me the capacity of her wealth of knowledge in the correct diagnosis and acupuncture applications. I have found in her the wonderful ability to read and understand my body and my feelings. She has been able to redirect my body into a better pain free and pain managed order that my system has embraced with the benefits of being pain free and a feeling of happiness and contentment that I had not felt in many years.
+
+I have been treated by 3 other acupuncturists in my adult life. Compared with Dr. Zhang I have found them all lacking in their ability to help me the way she has. With her training, empathy, intuition, and wonderful sense of humor, I feel confident you will be delighted with the treatment that Dr. Zhang will recommend and administer.`
+    }
+  ]
+};
+
+const categories = [
+  { id: 'featured', title: 'Featured Stories', icon: 'star' },
+  { id: 'fertility', title: 'Fertility & Pregnancy', icon: 'heart' },
+  { id: 'pain', title: 'Pain Management', icon: 'shield' },
+  { id: 'chronic', title: 'Chronic Conditions', icon: 'refresh' },
+  { id: 'allergies', title: 'Allergies & Respiratory', icon: 'wind' },
+  { id: 'stress', title: 'Stress, Sleep & Wellness', icon: 'moon' },
+  { id: 'general', title: 'General Testimonials', icon: 'users' }
+];
+---
+
+<Layout 
+  title="Testimonials" 
+  description="Read what patients say about their experience with Dr. Li Zhang at Qi For Life Acupuncture in Brentwood, TN. Real stories of healing from fertility, pain, chronic conditions, and more."
+>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Patient Stories</span>
+      <h1>Testimonials</h1>
+      <p class="page-hero__subtitle">Real experiences from patients whose lives have been transformed</p>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <section class="category-nav">
+    <div class="container">
+      <nav class="category-nav__list" aria-label="Testimonial categories">
+        {categories.map((cat) => (
+          <a href={`#${cat.id}`} class="category-nav__item">
+            {cat.title}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- Testimonials Content -->
+  <section class="testimonials-main section section--white">
+    <div class="container">
+      {categories.map((category) => (
+        <div class="testimonial-category" id={category.id}>
+          <h2 class="category-title">{category.title}</h2>
+          <div class="divider divider--left"></div>
+          
+          <div class="testimonials-grid">
+            {testimonials[category.id].map((testimonial) => (
+              <details class="testimonial-card">
+                <summary class="testimonial-card__summary">
+                  <div class="testimonial-card__header">
+                    <span class="testimonial-card__name">{testimonial.name}</span>
+                    <span class="testimonial-card__toggle">+</span>
+                  </div>
+                  <p class="testimonial-card__excerpt">"{testimonial.excerpt}"</p>
+                </summary>
+                <div class="testimonial-card__content">
+                  {testimonial.content.split('\n\n').map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+      
+      <div class="testimonials-note">
+        <p>
+          These testimonials reflect the personal experiences of our patients. Individual results may vary. 
+          We invite you to schedule a consultation to discuss how acupuncture and Traditional Chinese Medicine 
+          may benefit your specific health concerns.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section section--sage">
+    <div class="container container--narrow text-center">
+      <h2>Ready to Experience the Benefits?</h2>
+      <p class="cta__text">
+        Join the many patients who have found healing and relief through Dr. Zhang's expert care.
+      </p>
+      <a href="/contact" class="btn btn--gold">Book Your First Session</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    background-color: var(--color-charcoal);
+    color: var(--color-warm-white);
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    color: var(--color-warm-white);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .page-hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Category Navigation */
+  .category-nav {
+    background: var(--color-cream);
+    padding: var(--space-md) 0;
+    position: sticky;
+    top: 76px;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .category-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: center;
+  }
+  
+  .category-nav__item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+  
+  .category-nav__item:hover {
+    background: var(--color-sage);
+    color: var(--color-warm-white);
+  }
+  
+  /* Testimonial Categories */
+  .testimonial-category {
+    margin-bottom: var(--space-3xl);
+    scroll-margin-top: 140px;
+  }
+  
+  .testimonial-category:last-of-type {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .category-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xs);
+  }
+  
+  /* Testimonials Grid */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+  
+  @media (max-width: 900px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Testimonial Card */
+  .testimonial-card {
+    background: var(--color-cream);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow var(--transition-medium);
+  }
+  
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .testimonial-card__summary {
+    padding: var(--space-md);
+    cursor: pointer;
+    list-style: none;
+  }
+  
+  .testimonial-card__summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .testimonial-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .testimonial-card__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+  }
+  
+  .testimonial-card__toggle {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gold);
+    color: var(--color-charcoal);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: 300;
+    transition: transform var(--transition-medium);
+  }
+  
+  .testimonial-card[open] .testimonial-card__toggle {
+    transform: rotate(45deg);
+  }
+  
+  .testimonial-card__excerpt {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-warm-gray);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .testimonial-card__content {
+    padding: 0 var(--space-md) var(--space-md);
+    border-top: 1px solid rgba(44, 62, 45, 0.1);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-md);
+  }
+  
+  .testimonial-card__content p {
+    color: var(--color-charcoal);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .testimonial-card__content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Testimonials Note */
+  .testimonials-note {
+    margin-top: var(--space-2xl);
+    padding: var(--space-md);
+    background: rgba(122, 139, 110, 0.1);
+    border-radius: 4px;
+  }
+  
+  .testimonials-note p {
+    font-size: 0.875rem;
+    color: var(--color-warm-gray);
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* CTA */
+  .cta__text {
+    font-size: 1.125rem;
+    max-width: 500px;
+    margin: var(--space-md) auto var(--space-xl);
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .category-nav {
+      padding: var(--space-sm) 0;
+    }
+    
+    .category-nav__list {
+      gap: 0.25rem;
+    }
+    
+    .category-nav__item {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll for category navigation
+  document.querySelectorAll('.category-nav__item').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>

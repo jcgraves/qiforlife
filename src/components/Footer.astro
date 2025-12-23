@@ -1,0 +1,241 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <h3 class="footer__logo">Qi For Life</h3>
+          <p class="footer__tagline">Traditional Chinese Medicine in Brentwood, TN</p>
+          <p class="footer__description">
+            Dr. Li Zhang brings over 30 years of expertise in acupuncture and Traditional Chinese Medicine, 
+            helping patients achieve optimal health through holistic healing.
+          </p>
+        </div>
+        
+        <div class="footer__links">
+          <h4 class="footer__heading">Quick Links</h4>
+          <nav aria-label="Footer navigation">
+            <ul class="footer__nav">
+              <li><a href="/about">About Dr. Zhang</a></li>
+              <li><a href="/services">Our Services</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/testimonials">Testimonials</a></li>
+              <li><a href="/new-client-forms">New Client Forms</a></li>
+            </ul>
+          </nav>
+        </div>
+        
+        <div class="footer__contact">
+          <h4 class="footer__heading">Contact</h4>
+          <address class="footer__address">
+            <p>
+              <strong>Location:</strong><br />
+              1804 Williamson Court<br />
+              Suite 103<br />
+              Brentwood, TN 37027
+            </p>
+            <p>
+              <strong>Phone:</strong><br />
+              <a href="tel:+16153363132">615-336-3132</a>
+            </p>
+            <p>
+              <strong>Email:</strong><br />
+              <a href="mailto:drzhang@qiforlife.com">drzhang@qiforlife.com</a>
+            </p>
+          </address>
+        </div>
+        
+        <div class="footer__hours">
+          <h4 class="footer__heading">Hours</h4>
+          <p class="footer__hours-note">By Appointment Only</p>
+          <ul class="footer__hours-list">
+            <li><span>Tuesday - Saturday</span><span>8am - 4pm</span></li>
+            <li><span>Sunday - Monday</span><span>Closed</span></li>
+          </ul>
+          <a href="/contact" class="btn btn--gold footer__cta">Schedule Appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer__bottom">
+    <div class="container">
+      <p>&copy; {currentYear} Qi For Life Acupuncture. All rights reserved.</p>
+      <p class="footer__blog-link">
+        Learn more about Traditional Chinese Medicine at 
+        <a href="http://thebesthealthjourney.com" target="_blank" rel="noopener noreferrer">
+          The Best Health Journey
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
+  }
+  
+  .footer__main {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+  }
+  
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: var(--space-2xl);
+  }
+  
+  .footer__logo {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-warm-white);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .footer__tagline {
+    font-size: 0.875rem;
+    color: var(--color-gold);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  
+  .footer__description {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgba(250, 248, 245, 0.8);
+  }
+  
+  .footer__heading {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-md);
+  }
+  
+  .footer__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer__nav li {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .footer__nav a {
+    color: rgba(250, 248, 245, 0.8);
+    font-size: 0.9375rem;
+    transition: color var(--transition-fast);
+  }
+  
+  .footer__nav a:hover {
+    color: var(--color-warm-white);
+  }
+  
+  .footer__address {
+    font-style: normal;
+    font-size: 0.9375rem;
+    color: rgba(250, 248, 245, 0.8);
+  }
+  
+  .footer__address p {
+    margin-bottom: var(--space-md);
+  }
+  
+  .footer__address strong {
+    color: var(--color-warm-white);
+    font-weight: 500;
+  }
+  
+  .footer__address a {
+    color: rgba(250, 248, 245, 0.8);
+  }
+  
+  .footer__address a:hover {
+    color: var(--color-warm-white);
+  }
+  
+  .footer__hours-note {
+    font-size: 0.875rem;
+    color: var(--color-sage-light);
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+  }
+  
+  .footer__hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+  }
+  
+  .footer__hours-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9375rem;
+    color: rgba(250, 248, 245, 0.8);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(250, 248, 245, 0.1);
+  }
+  
+  .footer__cta {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+  
+  .footer__bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: var(--space-md) 0;
+  }
+  
+  .footer__bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .footer__bottom p {
+    font-size: 0.875rem;
+    color: rgba(250, 248, 245, 0.6);
+    margin: 0;
+  }
+  
+  .footer__blog-link a {
+    color: var(--color-gold-light);
+  }
+  
+  .footer__blog-link a:hover {
+    color: var(--color-gold);
+  }
+  
+  @media (max-width: 1024px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    
+    .footer__bottom .container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
