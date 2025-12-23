@@ -5,6 +5,7 @@ export default defineConfig({
   site: 'https://www.qiforlifeacupuncture.com',
   integrations: [sitemap()],
   build: {
-    assets: 'assets'
+    assets: 'assets',
+    inlineStylesheets: 'always'
   }
 });

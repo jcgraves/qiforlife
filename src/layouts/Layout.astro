@@ -53,15 +53,39 @@ const fullTitle = title === "Home" ? `${siteName} | Brentwood, TN` : `${title} |
     <meta name="ICBM" content="35.9955, -86.7897" />
     
     <!-- Favicons -->
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/jost-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Non-critical fonts loaded async -->
+    <link rel="stylesheet" href="/fonts/fonts.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/fonts/fonts.css" /></noscript>
+
+    <!-- Critical CSS with inlined font-faces -->
+    <style>
+      /* Critical font-faces - preloaded above */
+      @font-face{font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/jost-400.woff2') format('woff2')}
+      @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/cormorant-garamond-500.woff2') format('woff2')}
+      /* Critical styles */
+      :root{--color-cream:#FAF8F5;--color-sage:#7A8B6E;--color-burgundy:#8B4D57;--color-charcoal:#2C3E2D;--color-warm-white:#FFFFFF;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Jost',system-ui,sans-serif;--space-sm:1rem;--space-md:1.5rem;--space-lg:2rem;--space-xl:3rem;--transition-medium:300ms ease}
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth;font-size:16px}
+      body{font-family:var(--font-body);font-weight:400;line-height:1.7;color:var(--color-charcoal);background-color:var(--color-cream);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:500;line-height:1.3;color:var(--color-charcoal)}
+      h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:400;letter-spacing:-.02em}
+      .container{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--space-md)}
+      .btn{display:inline-flex;align-items:center;justify-content:center;padding:.875rem 2rem;font-family:var(--font-body);font-size:.9375rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all var(--transition-medium);text-decoration:none}
+      .btn--primary{background-color:var(--color-burgundy);color:var(--color-warm-white)}
+      .btn--secondary{background-color:transparent;color:var(--color-charcoal);border:1px solid var(--color-charcoal)}
+      .skip-link{position:absolute;top:-40px;left:0;background:var(--color-charcoal);color:var(--color-warm-white);padding:8px;z-index:100}
+      .skip-link:focus{top:0}
+    </style>
+
     <!-- Schema.org Structured Data for Local Business -->
     <script type="application/ld+json">
       {
