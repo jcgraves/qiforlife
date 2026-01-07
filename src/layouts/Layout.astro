@@ -127,8 +127,6 @@ const fullTitle = title === "Home" ? `${siteName} | Brentwood, TN` : `${title} |
       }
     </script>
 
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -137,20 +135,28 @@ const fullTitle = title === "Home" ? `${siteName} | Brentwood, TN` : `${title} |
       <slot />
     </main>
     <Footer />
+    <!-- Netlify Identity Widget - loaded dynamically to avoid CORS issues -->
     <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function(user) {
-          if (!user) {
-            window.netlifyIdentity.on("login", function() {
-              document.location.href = "/admin/";
+      (function() {
+        var script = document.createElement('script');
+        script.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+        script.onload = function() {
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function(user) {
+              if (!user) {
+                window.netlifyIdentity.on("login", function() {
+                  document.location.href = "/admin/";
+                });
+              }
             });
+            // Open the modal if there's an invite or recovery token in the URL
+            if (window.location.hash && (window.location.hash.includes('invite_token') || window.location.hash.includes('recovery_token'))) {
+              window.netlifyIdentity.open();
+            }
           }
-        });
-        // Open the modal if there's an invite or recovery token in the URL
-        if (window.location.hash && (window.location.hash.includes('invite_token') || window.location.hash.includes('recovery_token'))) {
-          window.netlifyIdentity.open();
-        }
-      }
+        };
+        document.body.appendChild(script);
+      })();
     </script>
   </body>
 </html>
