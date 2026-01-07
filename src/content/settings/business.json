@@ -1,0 +1,18 @@
+{
+  "businessName": "Qi For Life Acupuncture Clinic",
+  "siteName": "Qi For Life Acupuncture",
+  "phone": "615-336-3132",
+  "email": "drzhang@qiforlife.com",
+  "streetAddress": "1804 Williamson Court",
+  "suite": "Suite 103",
+  "city": "Brentwood",
+  "state": "TN",
+  "zipCode": "37027",
+  "mapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3226.5!2d-86.7897!3d35.9955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864665c6c6f6c67%3A0x1234567890abcdef!2s1804%20Williamson%20Ct%2C%20Brentwood%2C%20TN%2037027!5e0!3m2!1sen!2sus!4v1234567890",
+  "hours": {
+    "openDays": "Tuesday - Saturday",
+    "openTime": "8am",
+    "closeTime": "4pm",
+    "closedDays": "Sunday - Monday"
+  }
+}

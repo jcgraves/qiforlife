@@ -1,0 +1,109 @@
+{
+  "categories": [
+    {
+      "name": "Gynecological & Genitourinary",
+      "conditions": [
+        "Infertility (women and men)",
+        "Premenstrual syndrome (PMS)",
+        "Irregular, heavy or painful menstruation",
+        "Endometriosis",
+        "Menopause",
+        "Fibroids",
+        "Chronic bladder infections",
+        "Post partum rejuvenation",
+        "Kidney stones",
+        "Impotence & sexual dysfunction"
+      ]
+    },
+    {
+      "name": "Emotional & Psychological",
+      "conditions": [
+        "Anxiety",
+        "Insomnia",
+        "Depression",
+        "Stress"
+      ]
+    },
+    {
+      "name": "Eye, Ear, Nose, Throat",
+      "conditions": [
+        "Allergies and Sinusitis",
+        "Sore throat",
+        "Hay fever",
+        "Earache",
+        "Nerve deafness",
+        "Ringing in the ears",
+        "Dizziness",
+        "Poor eyesight"
+      ]
+    },
+    {
+      "name": "Circulatory Disorders",
+      "conditions": [
+        "High blood pressure",
+        "Angina pectoris",
+        "Arteriosclerosis",
+        "Anemia"
+      ]
+    },
+    {
+      "name": "Immune Disorders",
+      "conditions": [
+        "Candida",
+        "Chronic fatigue",
+        "Epstein Barr virus",
+        "Allergies",
+        "Lupus",
+        "MS"
+      ]
+    },
+    {
+      "name": "Gastrointestinal",
+      "conditions": [
+        "Irritable bowel syndrome",
+        "Spastic colon",
+        "Colitis",
+        "Constipation",
+        "Diarrhea",
+        "Food allergies",
+        "Ulcers",
+        "Gastritis",
+        "Abdominal bloating",
+        "Hemorrhoids"
+      ]
+    },
+    {
+      "name": "Musculoskeletal & Neurological",
+      "conditions": [
+        "Arthritis",
+        "Neuralgia",
+        "Sciatica",
+        "Back pain",
+        "Bursitis",
+        "Tendonitis",
+        "Stiff neck",
+        "Bell's palsy",
+        "Trigeminal neuralgia",
+        "Headaches and Migraines",
+        "Stroke",
+        "Cerebral palsy",
+        "Polio",
+        "Sprains",
+        "Muscle spasms",
+        "Shingles"
+      ]
+    },
+    {
+      "name": "Respiratory & Other",
+      "conditions": [
+        "Asthma",
+        "Emphysema",
+        "Bronchitis",
+        "Colds and flu",
+        "Chemotherapy/radiation side effects",
+        "Diabetes",
+        "Weight control"
+      ]
+    }
+  ]
+}

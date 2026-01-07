@@ -1,0 +1,47 @@
+{
+  "sectionLabel": "How We Can Help",
+  "heading": "Conditions We Treat",
+  "subheading": "Acupuncture and Traditional Chinese Medicine can effectively address a wide range of health concerns",
+  "cards": [
+    {
+      "title": "Pain Management",
+      "description": "Muscular, bone, disc, joint disorders, headaches, migraines, and chronic pain conditions",
+      "icon": "shield"
+    },
+    {
+      "title": "Fertility & Hormones",
+      "description": "Fertility issues, IUI/IVF support, hormonal disorders, and women's health concerns",
+      "icon": "heart"
+    },
+    {
+      "title": "Stress & Sleep",
+      "description": "Stress management, insomnia, anxiety, depression, and emotional wellbeing",
+      "icon": "stress"
+    },
+    {
+      "title": "Digestive Health",
+      "description": "IBS, colitis, Crohn's disease, and other gastrointestinal disorders",
+      "icon": "digestive"
+    },
+    {
+      "title": "Autoimmune Conditions",
+      "description": "Rheumatoid arthritis, ulcerative colitis, lupus, and immune system support",
+      "icon": "autoimmune"
+    },
+    {
+      "title": "Recovery & Support",
+      "description": "Post-surgery recovery, chemotherapy/radiation side effects, and rehabilitation",
+      "icon": "recovery"
+    },
+    {
+      "title": "Allergies",
+      "description": "Seasonal allergies, sinusitis, hay fever, and respiratory conditions",
+      "icon": "allergies"
+    },
+    {
+      "title": "Facial Rejuvenation",
+      "description": "Cosmetic acupuncture for natural, non-invasive facial rejuvenation",
+      "icon": "rejuvenation"
+    }
+  ]
+}
