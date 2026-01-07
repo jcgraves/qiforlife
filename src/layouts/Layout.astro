@@ -146,6 +146,10 @@ const fullTitle = title === "Home" ? `${siteName} | Brentwood, TN` : `${title} |
             });
           }
         });
+        // Open the modal if there's an invite or recovery token in the URL
+        if (window.location.hash && (window.location.hash.includes('invite_token') || window.location.hash.includes('recovery_token'))) {
+          window.netlifyIdentity.open();
+        }
       }
     </script>
   </body>
