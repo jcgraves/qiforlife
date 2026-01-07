@@ -1,0 +1,11 @@
+{
+  "categories": [
+    { "id": "featured", "title": "Featured Stories" },
+    { "id": "fertility", "title": "Fertility & Pregnancy" },
+    { "id": "pain", "title": "Pain Management" },
+    { "id": "chronic", "title": "Chronic Conditions" },
+    { "id": "allergies", "title": "Allergies & Respiratory" },
+    { "id": "stress", "title": "Stress, Sleep & Wellness" },
+    { "id": "general", "title": "General Testimonials" }
+  ]
+}

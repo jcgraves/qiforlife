@@ -1,0 +1,14 @@
+{
+  "forms": [
+    {
+      "title": "Patient Intake Form",
+      "description": "Complete health history and information about your current health concerns.",
+      "filePath": "/files/patient-intake-form.pdf"
+    },
+    {
+      "title": "Treatment Authorization",
+      "description": "Consent form authorizing acupuncture and Traditional Chinese Medicine treatment.",
+      "filePath": "/files/treatment-authorization.pdf"
+    }
+  ]
+}

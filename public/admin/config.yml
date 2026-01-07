@@ -1,0 +1,408 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "business"
+        label: "Business Info"
+        file: "src/content/settings/business.json"
+        fields:
+          - { label: "Business Name", name: "businessName", widget: "string" }
+          - { label: "Site Name", name: "siteName", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Street Address", name: "streetAddress", widget: "string" }
+          - { label: "Suite", name: "suite", widget: "string" }
+          - { label: "City", name: "city", widget: "string" }
+          - { label: "State", name: "state", widget: "string" }
+          - { label: "Zip Code", name: "zipCode", widget: "string" }
+          - { label: "Google Maps URL", name: "mapsUrl", widget: "string" }
+          - label: "Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Open Days", name: "openDays", widget: "string", hint: "e.g., Tuesday - Saturday" }
+              - { label: "Open Time", name: "openTime", widget: "string", hint: "e.g., 8am" }
+              - { label: "Close Time", name: "closeTime", widget: "string", hint: "e.g., 4pm" }
+              - { label: "Closed Days", name: "closedDays", widget: "string", hint: "e.g., Sunday - Monday" }
+
+  # Home Page
+  - name: "home"
+    label: "Home Page"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "src/content/home/hero.json"
+        fields:
+          - { label: "Credentials", name: "credentials", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+          - { label: "Primary Button Link", name: "primaryButtonLink", widget: "string" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+          - { label: "Secondary Button Link", name: "secondaryButtonLink", widget: "string" }
+
+      - name: "intro"
+        label: "Intro Section"
+        file: "src/content/home/intro.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+
+      - name: "conditions"
+        label: "Conditions Section"
+        file: "src/content/home/conditions.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "text" }
+          - label: "Condition Cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["shield", "heart", "stress", "digestive", "autoimmune", "recovery", "allergies", "rejuvenation"] }
+
+      - name: "office"
+        label: "Office Section"
+        file: "src/content/home/office.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Paragraph 1", name: "paragraph1", widget: "text" }
+          - { label: "Paragraph 2", name: "paragraph2", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+          - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+      - name: "featured-testimonial"
+        label: "Featured Testimonial"
+        file: "src/content/home/featured-testimonial.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Quote", name: "quote", widget: "text" }
+          - { label: "Author", name: "author", widget: "string" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+      - name: "cta"
+        label: "Call to Action"
+        file: "src/content/home/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+
+  # About Page
+  - name: "about"
+    label: "About Page"
+    files:
+      - name: "hero"
+        label: "About Hero"
+        file: "src/content/about/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+      - name: "bio"
+        label: "Biography"
+        file: "src/content/about/bio.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+
+      - name: "timeline"
+        label: "Timeline"
+        file: "src/content/about/timeline.json"
+        fields:
+          - { label: "Section Heading", name: "sectionHeading", widget: "string" }
+          - label: "Timeline Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "specialties"
+        label: "Specialties"
+        file: "src/content/about/specialties.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "text" }
+          - label: "Specialty Cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "publications"
+        label: "Publications Section"
+        file: "src/content/about/publications.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+          - { label: "Button Link", name: "buttonLink", widget: "string" }
+
+      - name: "about-testimonials"
+        label: "About Page Testimonials"
+        file: "src/content/about/testimonials.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+
+      - name: "about-cta"
+        label: "About CTA"
+        file: "src/content/about/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  # Services
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Icon", name: "icon", widget: "select", options: ["acupuncture", "electronic", "facial", "cupping", "moxibustion", "guasa", "tdp", "herbs", "hotstone", "qigong"] }
+
+  - name: "services-page"
+    label: "Services Page Content"
+    files:
+      - name: "services-hero"
+        label: "Services Hero"
+        file: "src/content/services-page/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Intro Text", name: "introText", widget: "text" }
+
+      - name: "what-to-expect"
+        label: "What to Expect"
+        file: "src/content/services-page/what-to-expect.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "services-cta"
+        label: "Services CTA"
+        file: "src/content/services-page/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  # FAQ
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "markdown" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+
+  - name: "faq-page"
+    label: "FAQ Page Content"
+    files:
+      - name: "faq-hero"
+        label: "FAQ Hero"
+        file: "src/content/faq-page/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+      - name: "conditions-list"
+        label: "Treatable Conditions"
+        file: "src/content/faq-page/conditions.json"
+        fields:
+          - label: "Condition Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category Name", name: "name", widget: "string" }
+              - { label: "Conditions", name: "conditions", widget: "list", field: { label: "Condition", name: "condition", widget: "string" } }
+
+      - name: "faq-cta"
+        label: "FAQ CTA"
+        file: "src/content/faq-page/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  # Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Full Content", name: "content", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "select", options: ["featured", "fertility", "pain", "chronic", "allergies", "stress", "general"] }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", required: false }
+
+  - name: "testimonials-page"
+    label: "Testimonials Page Content"
+    files:
+      - name: "testimonials-hero"
+        label: "Testimonials Hero"
+        file: "src/content/testimonials-page/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+      - name: "testimonials-categories"
+        label: "Category Labels"
+        file: "src/content/testimonials-page/categories.json"
+        fields:
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+
+      - name: "testimonials-disclaimer"
+        label: "Disclaimer"
+        file: "src/content/testimonials-page/disclaimer.json"
+        fields:
+          - { label: "Text", name: "text", widget: "text" }
+
+      - name: "testimonials-cta"
+        label: "Testimonials CTA"
+        file: "src/content/testimonials-page/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  # New Client Forms Page
+  - name: "new-client-forms"
+    label: "New Client Forms Page"
+    files:
+      - name: "forms-hero"
+        label: "Forms Hero"
+        file: "src/content/new-client-forms/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+      - name: "forms-intro"
+        label: "Forms Intro"
+        file: "src/content/new-client-forms/intro.json"
+        fields:
+          - { label: "Intro Text", name: "introText", widget: "text" }
+          - { label: "Cancellation Policy", name: "cancellationPolicy", widget: "text" }
+
+      - name: "forms-list"
+        label: "Downloadable Forms"
+        file: "src/content/new-client-forms/forms.json"
+        fields:
+          - label: "Forms"
+            name: "forms"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "File Path", name: "filePath", widget: "string" }
+
+      - name: "what-to-bring"
+        label: "What to Bring"
+        file: "src/content/new-client-forms/what-to-bring.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Items", name: "items", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+
+      - name: "preparation"
+        label: "How to Prepare"
+        file: "src/content/new-client-forms/preparation.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "forms-cta"
+        label: "Forms CTA"
+        file: "src/content/new-client-forms/cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Button Text", name: "buttonText", widget: "string" }
+
+  # Contact Page
+  - name: "contact"
+    label: "Contact Page"
+    files:
+      - name: "contact-hero"
+        label: "Contact Hero"
+        file: "src/content/contact/hero.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+      - name: "contact-form"
+        label: "Contact Form Labels"
+        file: "src/content/contact/form.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Intro Text", name: "introText", widget: "text" }
+          - { label: "Submit Button Text", name: "submitButtonText", widget: "string" }
+
+      - name: "contact-info"
+        label: "Contact Info Section"
+        file: "src/content/contact/info.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Intro Text", name: "introText", widget: "text" }
+
+      - name: "office-gallery"
+        label: "Office Gallery"
+        file: "src/content/contact/gallery.json"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }

@@ -1,0 +1,23 @@
+{
+  "sectionLabel": "Expertise",
+  "heading": "Areas of Specialization",
+  "subheading": "Dr. Zhang has vast knowledge in combining acupuncture and Chinese herbal medicine to treat various conditions",
+  "cards": [
+    {
+      "title": "Women's Health & Fertility",
+      "description": "Dr. Zhang specializes in women's health and fertility problems, including infertility, IUI and IVF support, high FSH, miscarriage prevention, egg quality improvement, implantation support, endometriosis, and premature ovarian failure."
+    },
+    {
+      "title": "Internal Chronic Conditions",
+      "description": "Extensive experience treating anxiety, allergies, stress, migraines, inflammatory bowel disease, cancer support treatment, hypertension, arthritis, and chronic pain conditions."
+    },
+    {
+      "title": "Neurological Conditions",
+      "description": "Specialized training in treating neuromuscular paralysis, Parkinson's disease, neurodegenerative conditions, stroke rehabilitation, and numbness."
+    },
+    {
+      "title": "Pediatric Acupuncture",
+      "description": "Dr. Zhang received specialty training in pediatric acupuncture in China and has helped many children, including those with autism. She is the author of \"Pediatric Acupressure.\""
+    }
+  ]
+}
