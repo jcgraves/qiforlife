@@ -3,16 +3,16 @@
   "heading": "How to Prepare",
   "steps": [
     {
+      "description": "Avoid alcohol and caffeine on the day of your appointment. If you feel hungry , eat a light meal 30’ before your session, but not immediately before treatment.",
+      "title": "Before Your Visit"
+    },
+    {
       "title": "What to Wear",
       "description": "Wear loose, comfortable clothing that can be easily rolled up to expose your arms and legs. Avoid tight-fitting clothes or complicated outfits."
     },
     {
-      "title": "After Treatment",
-      "description": "Plan to take it easy after your session. Avoid strenuous activity, alcohol, and heavy meals for several hours following treatment to maximize benefits."
-    },
-    {
-      "description": "Avoid alcohol and caffeine on the day of your appointment. If you feel hungry , eat a light meal 30’ before your session, but not immediately before treatment.",
-      "title": "Before Your Visit"
+      "description": "Please plan to take it easy after your session. Do not swim in a public pool the day after treatment. Feeling tired is normal, and you may take a nap if needed. Avoid strenuous activity for at least two hours, and avoid alcohol and heavy meals for at least one hour following treatment to maximize the benefits.",
+      "title": "After Treatment "
     }
   ]
 }
