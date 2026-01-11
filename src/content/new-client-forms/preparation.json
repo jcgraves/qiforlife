@@ -3,16 +3,16 @@
   "heading": "How to Prepare",
   "steps": [
     {
-      "title": "Before Your Visit",
-      "description": "Avoid alcohol and caffeine on the day of your appointment. Eat a light meal 1-2 hours before your session, but not immediately before treatment."
-    },
-    {
       "title": "What to Wear",
       "description": "Wear loose, comfortable clothing that can be easily rolled up to expose your arms and legs. Avoid tight-fitting clothes or complicated outfits."
     },
     {
       "title": "After Treatment",
       "description": "Plan to take it easy after your session. Avoid strenuous activity, alcohol, and heavy meals for several hours following treatment to maximize benefits."
+    },
+    {
+      "description": "Avoid alcohol and caffeine on the day of your appointment. If you feel hungry , eat a light meal 30’ before your session, but not immediately before treatment.",
+      "title": "Before Your Visit"
     }
   ]
 }
