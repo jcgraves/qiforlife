@@ -1,17 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+// Load new client forms page content
+const hero = await getEntry('new-client-forms', 'hero');
+const intro = await getEntry('new-client-forms', 'intro');
+const formsData = await getEntry('new-client-forms', 'forms');
+const whatToBring = await getEntry('new-client-forms', 'what-to-bring');
+const preparation = await getEntry('new-client-forms', 'preparation');
+const cta = await getEntry('new-client-forms', 'cta');
+
+// Form icons
+const formIcons = [
+  '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+  '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+];
 ---
 
-<Layout 
-  title="New Client Forms" 
+<Layout
+  title="New Client Forms"
   description="Download and complete patient intake forms before your first visit to Qi For Life Acupuncture in Brentwood, TN. Patient intake form and treatment authorization."
 >
   <!-- Hero Section -->
   <section class="page-hero">
     <div class="container">
-      <span class="section-label">New Patients</span>
-      <h1>New Client Forms</h1>
-      <p class="page-hero__subtitle">Prepare for Your First Visit</p>
+      <span class="section-label">{hero?.data.sectionLabel}</span>
+      <h1>{hero?.data.title}</h1>
+      <p class="page-hero__subtitle">{hero?.data.subtitle}</p>
     </div>
   </section>
 
@@ -19,50 +34,35 @@ import Layout from '../layouts/Layout.astro';
   <section class="forms-main section section--white">
     <div class="container container--narrow">
       <div class="forms-intro">
-        <p>
-          Please print, complete, and bring the following forms with you for your first visit. 
-          This will help us make the most of your appointment time with Dr. Zhang.
-        </p>
-        
+        <p>{intro?.data.introText}</p>
+
         <div class="forms-notice">
-          <strong>Cancellation Policy:</strong> If you need to reschedule or cancel your appointment, 
-          please do so within 24 hours notice to avoid receiving a late notice charge.
+          <strong>Cancellation Policy:</strong> {intro?.data.cancellationPolicy}
         </div>
       </div>
-      
+
       <div class="forms-grid">
-        <div class="form-card">
-          <div class="form-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        {formsData?.data.forms.map((form: { title: string; description: string; filePath: string }, index: number) => (
+          <div class="form-card">
+            <div class="form-card__icon">
+              <Fragment set:html={formIcons[index] || formIcons[0]} />
+            </div>
+            <h3>{form.title}</h3>
+            <p>{form.description}</p>
+            <a href={form.filePath} class="btn btn--primary" target="_blank" rel="noopener">
+              Download Form (PDF)
+            </a>
           </div>
-          <h3>Patient Intake Form</h3>
-          <p>Complete health history and information about your current health concerns.</p>
-          <a href="/files/patient-intake-form.pdf" class="btn btn--primary" target="_blank" rel="noopener">
-            Download Form (PDF)
-          </a>
-        </div>
-        
-        <div class="form-card">
-          <div class="form-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h3>Treatment Authorization</h3>
-          <p>Consent form authorizing acupuncture and Traditional Chinese Medicine treatment.</p>
-          <a href="/files/treatment-authorization.pdf" class="btn btn--primary" target="_blank" rel="noopener">
-            Download Form (PDF)
-          </a>
-        </div>
+        ))}
       </div>
-      
+
       <div class="forms-instructions">
-        <h2>What to Bring to Your First Appointment</h2>
+        <h2>{whatToBring?.data.heading}</h2>
         <div class="divider divider--left"></div>
         <ul>
-          <li>Completed intake forms (printed and filled out)</li>
-          <li>List of current medications and supplements</li>
-          <li>Any relevant medical records or test results</li>
-          <li>Wear comfortable, loose-fitting clothing</li>
-          <li>Avoid eating a large meal within 30 minutes of your appointment</li>
+          {whatToBring?.data.items.map((item: string) => (
+            <li>{item}</li>
+          ))}
         </ul>
       </div>
     </div>
@@ -72,43 +72,20 @@ import Layout from '../layouts/Layout.astro';
   <section class="preparation section section--cream">
     <div class="container container--narrow">
       <div class="section-header">
-        <span class="section-label">Getting Ready</span>
-        <h2>How to Prepare</h2>
+        <span class="section-label">{preparation?.data.sectionLabel}</span>
+        <h2>{preparation?.data.heading}</h2>
       </div>
-      
+
       <div class="prep-list">
-        <div class="prep-item">
-          <span class="prep-item__number">1</span>
-          <div class="prep-item__content">
-            <h3>Before Your Visit</h3>
-            <p>
-              Avoid alcohol and caffeine on the day of your appointment. Eat a light meal 1-2 hours 
-              before your session, but not immediately before treatment.
-            </p>
+        {preparation?.data.steps.map((step: { title: string; description: string }, index: number) => (
+          <div class="prep-item">
+            <span class="prep-item__number">{index + 1}</span>
+            <div class="prep-item__content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="prep-item">
-          <span class="prep-item__number">2</span>
-          <div class="prep-item__content">
-            <h3>What to Wear</h3>
-            <p>
-              Wear loose, comfortable clothing that can be easily rolled up to expose your arms and 
-              legs. Avoid tight-fitting clothes or complicated outfits.
-            </p>
-          </div>
-        </div>
-        
-        <div class="prep-item">
-          <span class="prep-item__number">3</span>
-          <div class="prep-item__content">
-            <h3>After Treatment</h3>
-            <p>
-              Plan to take it easy after your session. Avoid strenuous activity, alcohol, and heavy 
-              meals for several hours following treatment to maximize benefits.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -116,11 +93,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- CTA Section -->
   <section class="cta section section--sage">
     <div class="container container--narrow text-center">
-      <h2>Ready to Schedule?</h2>
-      <p class="cta__text">
-        Once you've downloaded and completed your forms, contact us to schedule your first appointment.
-      </p>
-      <a href="/contact" class="btn btn--gold">Schedule Appointment</a>
+      <h2>{cta?.data.heading}</h2>
+      <p class="cta__text">{cta?.data.text}</p>
+      <a href="/contact" class="btn btn--gold">{cta?.data.buttonText}</a>
     </div>
   </section>
 </Layout>

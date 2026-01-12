@@ -1,20 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
 import officeInterior from '../images/office-interior.jpg';
 import waitingRoom from '../images/waiting-room.jpg';
+
+// Load contact page content
+const hero = await getEntry('contact', 'hero');
+const formContent = await getEntry('contact', 'form');
+const infoContent = await getEntry('contact', 'info');
+const gallery = await getEntry('contact', 'gallery');
+
+// Load business settings
+const business = await getEntry('settings', 'business');
 ---
 
-<Layout 
-  title="Contact" 
-  description="Schedule your acupuncture appointment with Dr. Li Zhang in Brentwood, TN. Call 615-336-3132 or email drzhang@qiforlife.com. Located at 1804 Williamson Court Suite 103."
+<Layout
+  title="Contact"
+  description={`Schedule your acupuncture appointment with Dr. Li Zhang in ${business?.data.city}, ${business?.data.state}. Call ${business?.data.phone} or email ${business?.data.email}. Located at ${business?.data.streetAddress} ${business?.data.suite}.`}
 >
   <!-- Hero Section -->
   <section class="page-hero">
     <div class="container">
-      <span class="section-label">Get in Touch</span>
-      <h1>Contact</h1>
-      <p class="page-hero__subtitle">Schedule Your First Session</p>
+      <span class="section-label">{hero?.data.sectionLabel}</span>
+      <h1>{hero?.data.title}</h1>
+      <p class="page-hero__subtitle">{hero?.data.subtitle}</p>
     </div>
   </section>
 
@@ -24,57 +34,53 @@ import waitingRoom from '../images/waiting-room.jpg';
       <div class="contact-grid">
         <!-- Contact Info -->
         <div class="contact-info">
-          <h2>Visit Our Clinic</h2>
+          <h2>{infoContent?.data.heading}</h2>
           <div class="divider divider--left"></div>
-          <p class="contact-info__intro">
-            We see patients by appointment only. Please call or email to schedule your first appointment.
-          </p>
-          
+          <p class="contact-info__intro">{infoContent?.data.introText}</p>
+
           <div class="contact-details">
             <div class="contact-detail">
               <h3>Location</h3>
               <address>
-                1804 Williamson Court<br />
-                Suite 103<br />
-                Brentwood, TN 37027
+                {business?.data.streetAddress}<br />
+                {business?.data.suite}<br />
+                {business?.data.city}, {business?.data.state} {business?.data.zipCode}
               </address>
             </div>
-            
+
             <div class="contact-detail">
               <h3>Phone</h3>
-              <p><a href="tel:+16153363132">615-336-3132</a></p>
+              <p><a href={`tel:+1${business?.data.phone.replace(/-/g, '')}`}>{business?.data.phone}</a></p>
             </div>
-            
+
             <div class="contact-detail">
               <h3>Email</h3>
-              <p><a href="mailto:drzhang@qiforlife.com">drzhang@qiforlife.com</a></p>
+              <p><a href={`mailto:${business?.data.email}`}>{business?.data.email}</a></p>
             </div>
-            
+
             <div class="contact-detail">
               <h3>Hours</h3>
               <p class="hours-note">By Appointment Only</p>
               <ul class="hours-list">
-                <li><span>Tuesday - Saturday</span><span>8am - 4pm</span></li>
-                <li><span>Sunday - Monday</span><span>Closed</span></li>
+                <li><span>{business?.data.hours.openDays}</span><span>{business?.data.hours.openTime} - {business?.data.hours.closeTime}</span></li>
+                <li><span>{business?.data.hours.closedDays}</span><span>Closed</span></li>
               </ul>
             </div>
           </div>
         </div>
-        
+
         <!-- Contact Form -->
         <div class="contact-form-wrapper">
-          <h2>Request an Appointment</h2>
+          <h2>{formContent?.data.heading}</h2>
           <div class="divider divider--left"></div>
-          <p class="contact-form__intro">
-            Fill out the form below and we'll contact you to confirm your appointment.
-          </p>
-          
+          <p class="contact-form__intro">{formContent?.data.introText}</p>
+
           <form class="contact-form" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="appointment" />
             <p class="hidden" style="display: none;">
               <label>Don't fill this out if you're human: <input name="bot-field" /></label>
             </p>
-            
+
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name <span class="required">*</span></label>
@@ -85,7 +91,7 @@ import waitingRoom from '../images/waiting-room.jpg';
                 <input type="text" id="lastName" name="lastName" required />
               </div>
             </div>
-            
+
             <div class="form-row">
               <div class="form-group">
                 <label for="email">Email <span class="required">*</span></label>
@@ -96,7 +102,7 @@ import waitingRoom from '../images/waiting-room.jpg';
                 <input type="tel" id="phone" name="phone" required />
               </div>
             </div>
-            
+
             <div class="form-group">
               <label for="visitType">Type of Visit</label>
               <select id="visitType" name="visitType">
@@ -106,12 +112,12 @@ import waitingRoom from '../images/waiting-room.jpg';
                 <option value="question">General Inquiry</option>
               </select>
             </div>
-            
+
             <div class="form-group">
               <label for="concern">Primary Health Concern</label>
               <textarea id="concern" name="concern" rows="4" placeholder="Please briefly describe your primary health concern or reason for visit..."></textarea>
             </div>
-            
+
             <div class="form-group">
               <label for="preferredContact">Preferred Contact Method</label>
               <select id="preferredContact" name="preferredContact">
@@ -119,8 +125,8 @@ import waitingRoom from '../images/waiting-room.jpg';
                 <option value="email">Email</option>
               </select>
             </div>
-            
-            <button type="submit" class="btn btn--primary">Send Request</button>
+
+            <button type="submit" class="btn btn--primary">{formContent?.data.submitButtonText}</button>
           </form>
         </div>
       </div>
@@ -130,15 +136,15 @@ import waitingRoom from '../images/waiting-room.jpg';
   <!-- Map Section -->
   <section class="map-section">
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3226.5!2d-86.7897!3d35.9955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864665c6c6f6c67%3A0x1234567890abcdef!2s1804%20Williamson%20Ct%2C%20Brentwood%2C%20TN%2037027!5e0!3m2!1sen!2sus!4v1234567890"
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
+      <iframe
+        src={business?.data.mapsUrl}
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Qi For Life Acupuncture Clinic Location">
+        title={`${business?.data.businessName} Location`}>
       </iframe>
     </div>
   </section>
@@ -147,8 +153,8 @@ import waitingRoom from '../images/waiting-room.jpg';
   <section class="office-images section section--cream">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Our Space</span>
-        <h2>A Healing Environment</h2>
+        <span class="section-label">{gallery?.data.sectionLabel}</span>
+        <h2>{gallery?.data.heading}</h2>
       </div>
       <div class="office-gallery">
         <Image
