@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
-import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
+import drZhangFull from '../images/dr-zhang-full.jpg';
 
 // Load about page content
 const hero = await getEntry('about', 'hero');
@@ -33,7 +33,7 @@ const cta = await getEntry('about', 'cta');
       <div class="about-content__grid">
         <div class="about-content__image">
           <Image
-            src={drZhangHeadshot}
+            src={drZhangFull}
             alt="Dr. Li Zhang, Licensed Acupuncturist"
             widths={[300, 400, 600]}
             sizes="(max-width: 900px) 350px, 400px"

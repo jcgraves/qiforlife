@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
+import needlesImage from '../images/Needles.jpg';
+import herbsImage from '../images/Herbs.jpg';
 
 // Load services page content
 const hero = await getEntry('services-page', 'hero');
@@ -60,8 +63,38 @@ const iconMap: Record<string, string> = {
     </div>
   </section>
 
+  <!-- Services Images -->
+  <section class="services-images section section--cream">
+    <div class="container">
+      <div class="services-images__grid">
+        <Image
+          src={needlesImage}
+          alt="Acupuncture needles - precision instruments of Traditional Chinese Medicine"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          width={800}
+          height={533}
+          loading="lazy"
+          format="webp"
+          quality={70}
+        />
+        <Image
+          src={herbsImage}
+          alt="Chinese herbal medicine formulas"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          width={800}
+          height={533}
+          loading="lazy"
+          format="webp"
+          quality={70}
+        />
+      </div>
+    </div>
+  </section>
+
   <!-- What to Expect -->
-  <section class="expect section section--cream">
+  <section class="expect section section--white">
     <div class="container container--narrow">
       <div class="section-header">
         <span class="section-label">{whatToExpect?.data.sectionLabel}</span>
@@ -189,6 +222,27 @@ const iconMap: Record<string, string> = {
   .expect-item p {
     color: var(--color-warm-gray);
     margin: 0;
+  }
+
+  /* Services Images */
+  .services-images__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .services-images__grid img {
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .services-images__grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* CTA */

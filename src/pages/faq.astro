@@ -44,30 +44,30 @@ const sortedFaqs = faqItems.sort((a, b) => a.data.order - b.data.order);
             </details>
           );
         })}
-      </div>
-    </div>
-  </section>
 
-  <!-- Conditions Section -->
-  <section class="conditions-section section section--cream">
-    <div class="container container--narrow">
-      <h2 class="conditions-heading">What conditions can be treated by Chinese medicine and acupuncture?</h2>
-      <p class="conditions-intro">
-        Acupuncture can effectively treat a wide array of acute and chronic diseases and health conditions
-        and provide preventative care. Here are commonly treated conditions:
-      </p>
+        <!-- Conditions as accordion item -->
+        <details class="faq-item">
+          <summary class="faq-question">What conditions can be treated by Chinese medicine and acupuncture?</summary>
+          <div class="faq-answer">
+            <p class="conditions-intro">
+              Acupuncture can effectively treat a wide array of acute and chronic diseases and health conditions
+              and provide preventative care. Here are commonly treated conditions:
+            </p>
 
-      <div class="conditions-grid">
-        {conditionsData?.data.categories.map((category: { name: string; conditions: string[] }) => (
-          <div class="condition-category">
-            <h4>{category.name}</h4>
-            <ul>
-              {category.conditions.map((condition: string) => (
-                <li>{condition}</li>
+            <div class="conditions-grid">
+              {conditionsData?.data.categories.map((category: { name: string; conditions: string[] }) => (
+                <div class="condition-category">
+                  <h4>{category.name}</h4>
+                  <ul>
+                    {category.conditions.map((condition: string) => (
+                      <li>{condition}</li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-        ))}
+        </details>
       </div>
     </div>
   </section>
@@ -160,26 +160,17 @@ const sortedFaqs = faqItems.sort((a, b) => a.data.order - b.data.order);
     line-height: 1.7;
   }
 
-  /* Conditions Section */
-  .conditions-heading {
-    text-align: center;
-    margin-bottom: var(--space-sm);
-  }
-
+  /* Conditions Grid (inside accordion) */
   .conditions-intro {
-    text-align: center;
     color: var(--color-warm-gray);
-    margin-bottom: var(--space-xl);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: var(--space-lg);
+    line-height: 1.7;
   }
 
   .conditions-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
-    margin-top: var(--space-md);
   }
 
   @media (max-width: 768px) {

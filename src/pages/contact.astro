@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
 import officeInterior from '../images/office-interior.jpg';
 import waitingRoom from '../images/waiting-room.jpg';
+import shrineImage from '../images/Qi_For_Life_Shrine.jpg';
 
 // Load contact page content
 const hero = await getEntry('contact', 'hero');
@@ -158,12 +159,23 @@ const business = await getEntry('settings', 'business');
       </div>
       <div class="office-gallery">
         <Image
+          src={shrineImage}
+          alt="Qi For Life Acupuncture clinic sign - Body, Mind, Spirit for good Health"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 900px) 100vw, 33vw"
+          width={800}
+          height={533}
+          loading="lazy"
+          format="webp"
+          quality={70}
+        />
+        <Image
           src={waitingRoom}
           alt="Qi For Life Acupuncture waiting room"
           widths={[400, 600, 800]}
-          sizes="(max-width: 640px) 100vw, 50vw"
+          sizes="(max-width: 900px) 100vw, 33vw"
           width={800}
-          height={600}
+          height={533}
           loading="lazy"
           format="webp"
           quality={70}
@@ -172,9 +184,9 @@ const business = await getEntry('settings', 'business');
           src={officeInterior}
           alt="Qi For Life Acupuncture clinic interior"
           widths={[400, 600, 800]}
-          sizes="(max-width: 640px) 100vw, 50vw"
+          sizes="(max-width: 900px) 100vw, 33vw"
           width={800}
-          height={600}
+          height={533}
           loading="lazy"
           format="webp"
           quality={70}
@@ -341,21 +353,35 @@ const business = await getEntry('settings', 'business');
   /* Office Gallery */
   .office-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-lg);
   }
-  
+
   .office-gallery img {
     border-radius: 4px;
     box-shadow: var(--shadow-md);
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     object-fit: cover;
   }
-  
+
+  @media (max-width: 900px) {
+    .office-gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .office-gallery img:first-child {
+      grid-column: span 2;
+    }
+  }
+
   @media (max-width: 640px) {
     .office-gallery {
       grid-template-columns: 1fr;
+    }
+
+    .office-gallery img:first-child {
+      grid-column: span 1;
     }
   }
 </style>
