@@ -15,10 +15,12 @@ const settingsCollection = defineCollection({
     zipCode: z.string(),
     mapsUrl: z.string(),
     hours: z.object({
-      openDays: z.string(),
-      openTime: z.string(),
-      closeTime: z.string(),
+      tuesdayThursday: z.string(),
+      tuesdayThursdayTime: z.string(),
+      fridaySaturday: z.string(),
+      fridaySaturdayTime: z.string(),
       closedDays: z.string(),
+      closedTime: z.string(),
     }),
   }),
 });

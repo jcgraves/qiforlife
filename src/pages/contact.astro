@@ -63,8 +63,9 @@ const business = await getEntry('settings', 'business');
               <h3>Hours</h3>
               <p class="hours-note">By Appointment Only</p>
               <ul class="hours-list">
-                <li><span>{business?.data.hours.openDays}</span><span>{business?.data.hours.openTime} - {business?.data.hours.closeTime}</span></li>
-                <li><span>{business?.data.hours.closedDays}</span><span>Closed</span></li>
+                <li><span>{business?.data.hours.tuesdayThursday}</span><span>{business?.data.hours.tuesdayThursdayTime}</span></li>
+                <li><span>{business?.data.hours.fridaySaturday}</span><span>{business?.data.hours.fridaySaturdayTime}</span></li>
+                <li><span>{business?.data.hours.closedDays}</span><span>{business?.data.hours.closedTime}</span></li>
               </ul>
             </div>
           </div>
