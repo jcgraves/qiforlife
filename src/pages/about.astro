@@ -1,19 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
+import { getEntry } from 'astro:content';
+import drZhangFull from '../images/dr-zhang-full.jpg';
+
+// Load about page content
+const hero = await getEntry('about', 'hero');
+const bio = await getEntry('about', 'bio');
+const timeline = await getEntry('about', 'timeline');
+const specialties = await getEntry('about', 'specialties');
+const publications = await getEntry('about', 'publications');
+const testimonials = await getEntry('about', 'testimonials');
+const cta = await getEntry('about', 'cta');
 ---
 
-<Layout 
-  title="About Dr. Li Zhang" 
+<Layout
+  title="About Dr. Li Zhang"
   description="Learn about Dr. Li Zhang, licensed acupuncturist with over 30 years of experience. Trained at top Chinese medicine schools, she brings elite expertise to Brentwood, TN."
 >
   <!-- Hero Section -->
   <section class="page-hero">
     <div class="container">
-      <span class="section-label">About</span>
-      <h1>Dr. Li Zhang</h1>
-      <p class="page-hero__subtitle">LAC., Dipl. O.M., M.D. (China), M.S.</p>
+      <span class="section-label">{hero?.data.sectionLabel}</span>
+      <h1>{hero?.data.title}</h1>
+      <p class="page-hero__subtitle">{hero?.data.subtitle}</p>
     </div>
   </section>
 
@@ -23,7 +33,7 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
       <div class="about-content__grid">
         <div class="about-content__image">
           <Image
-            src={drZhangHeadshot}
+            src={drZhangFull}
             alt="Dr. Li Zhang, Licensed Acupuncturist"
             widths={[300, 400, 600]}
             sizes="(max-width: 900px) 350px, 400px"
@@ -35,28 +45,12 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
           />
         </div>
         <div class="about-content__text">
-          <h2>A Lifetime of Healing</h2>
+          <h2>{bio?.data.heading}</h2>
           <div class="divider divider--left"></div>
-          
-          <p>
-            Dr. Li Zhang is a licensed acupuncturist with over 30 years of education and experience. 
-            Born and raised in a medical family, she developed a deep understanding of healing traditions 
-            from an early age and went on to become one of the most accomplished practitioners in her field.
-          </p>
-          
-          <p>
-            In 1991, she graduated top of her class from the best college of Traditional Chinese Medicine 
-            in China. She earned her M.D. from Chengdu University of Traditional Chinese Medicine and 
-            received her Master's Degree in Acupuncture from Shanghai University of Traditional Chinese 
-            Medicine—the finest institutions for Chinese medicine education in the world.
-          </p>
-          
-          <p>
-            Following her academic achievements, Dr. Zhang was selected for a position at Shanghai 
-            Acupuncture and Moxibustion Institution, the largest acupuncture center in China. This 
-            highly competitive selection was a great honor and allowed her to refine her skills working 
-            with complex cases.
-          </p>
+
+          {bio?.data.paragraphs.map((paragraph: string) => (
+            <p>{paragraph}</p>
+          ))}
         </div>
       </div>
     </div>
@@ -65,60 +59,19 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
   <!-- Background Section -->
   <section class="background section section--cream">
     <div class="container container--narrow">
-      <h2 class="text-center">Education & Experience</h2>
+      <h2 class="text-center">{timeline?.data.sectionHeading}</h2>
       <div class="divider"></div>
-      
+
       <div class="timeline">
-        <div class="timeline__item">
-          <div class="timeline__marker"></div>
-          <div class="timeline__content">
-            <h3>Medical Education in China</h3>
-            <p>
-              Dr. Zhang earned her M.D. from Chengdu University of Traditional Chinese Medicine and her Master's degree
-              in Acupuncture from Shanghai University of Traditional Chinese Medicine—two of the most prestigious TCM 
-              institutions in China. She graduated top of her class from both programs. Her eight years of formal training
-               integrated both Chinese and Western medicine, providing a comprehensive foundation in understanding the 
-               human body.
-            </p>
+        {timeline?.data.items.map((item: { title: string; description: string }) => (
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="timeline__item">
-          <div class="timeline__marker"></div>
-          <div class="timeline__content">
-            <h3>Clinical Practice in Shanghai</h3>
-            <p>
-              Dr. Zhang spent six years as an acupuncturist at the Shanghai Acupuncture and Moxibustion Institution,
-              the largest and most prestigious acupuncture center in China. Selection for a position there is highly 
-              competitive, and during her time she treated patients with a wide range of conditions and developed 
-              expertise in complex cases.
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline__item">
-          <div class="timeline__marker"></div>
-          <div class="timeline__content">
-            <h3>Research at Vanderbilt University</h3>
-            <p>
-              After relocating to the United States, Dr. Zhang conducted postdoctoral research at Vanderbilt University, 
-              bridging her Chinese medicine background with Western scientific research methods. She has 
-              authored more than twenty publications and a book, Pediatric Acupressure.
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline__item">
-          <div class="timeline__marker"></div>
-          <div class="timeline__content">
-            <h3>Qi For Life Acupuncture</h3>
-            <p>
-              Today, Dr. Zhang brings over 30 years of education and experience to patients in Brentwood, TN,
-              integrating traditional Chinese medicine with Western medical knowledge to help people achieve 
-              optimal health.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -127,45 +80,18 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
   <section class="specialties section section--white">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Expertise</span>
-        <h2>Areas of Specialization</h2>
-        <p>Dr. Zhang has vast knowledge in combining acupuncture and Chinese herbal medicine to treat various conditions</p>
+        <span class="section-label">{specialties?.data.sectionLabel}</span>
+        <h2>{specialties?.data.heading}</h2>
+        <p>{specialties?.data.subheading}</p>
       </div>
-      
+
       <div class="specialties__grid">
-        <div class="specialty-card">
-          <h3>Women's Health & Fertility</h3>
-          <p>
-            Dr. Zhang specializes in women's health and fertility problems, including infertility, 
-            IUI and IVF support, high FSH, miscarriage prevention, egg quality improvement, 
-            implantation support, endometriosis, and premature ovarian failure.
-          </p>
-        </div>
-        
-        <div class="specialty-card">
-          <h3>Internal Chronic Conditions</h3>
-          <p>
-            Extensive experience treating anxiety, allergies, stress, migraines, inflammatory bowel disease, 
-            cancer support treatment, hypertension, arthritis, and chronic pain conditions.
-          </p>
-        </div>
-        
-        <div class="specialty-card">
-          <h3>Neurological Conditions</h3>
-          <p>
-            Specialized training in treating neuromuscular paralysis, Parkinson's disease, 
-            neurodegenerative conditions, stroke rehabilitation, and numbness.
-          </p>
-        </div>
-        
-        <div class="specialty-card">
-          <h3>Pediatric Acupuncture</h3>
-          <p>
-            Dr. Zhang received specialty training in pediatric acupuncture in China and has 
-            helped many children, including those with autism. She is the author of 
-            "Pediatric Acupressure."
-          </p>
-        </div>
+        {specialties?.data.cards.map((card: { title: string; description: string }) => (
+          <div class="specialty-card">
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -173,15 +99,13 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
   <!-- Publications Section -->
   <section class="publications section section--sage">
     <div class="container container--narrow text-center">
-      <h2>Scholarly Work</h2>
+      <h2>{publications?.data.heading}</h2>
       <div class="divider"></div>
       <p class="publications__text">
-        Dr. Zhang enjoys scholarly endeavors and boasts more than twenty publications and one book, 
-        <em>Pediatric Acupressure</em>. Her commitment to advancing the field continues through her 
-        practice and through her blog, The Best Health Journey.
+        {publications?.data.text}
       </p>
-      <a href="http://thebesthealthjourney.com" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
-        Visit The Best Health Journey Blog
+      <a href={publications?.data.buttonLink} target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+        {publications?.data.buttonText}
       </a>
     </div>
   </section>
@@ -190,30 +114,19 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
   <section class="testimonials-preview section section--cream">
     <div class="container container--narrow">
       <div class="section-header">
-        <span class="section-label">Patient Stories</span>
-        <h2>What Patients Say</h2>
+        <span class="section-label">{testimonials?.data.sectionLabel}</span>
+        <h2>{testimonials?.data.heading}</h2>
       </div>
-      
+
       <div class="testimonial-cards">
-        <blockquote class="testimonial-card">
-          <p>
-            "Dr. Zhang has changed my life. She is a patient, kind and very skilled acupuncturist. 
-            Over the course of a year, her treatments have brought significant healing to my body! 
-            I recommend that you call her today... you will not regret the decision!"
-          </p>
-          <cite>— Stephanie W., Brentwood</cite>
-        </blockquote>
-        
-        <blockquote class="testimonial-card">
-          <p>
-            "I would say do not wait until all other options are exhausted before going to Dr. Zhang, 
-            go to her first. You will never regret it, and you will be forever grateful for a Dr. who 
-            cares for her patients in the most deeply caring, compassionate, way possible."
-          </p>
-          <cite>— Deborah R., Brentwood</cite>
-        </blockquote>
+        {testimonials?.data.items.map((item: { quote: string; author: string }) => (
+          <blockquote class="testimonial-card">
+            <p>"{item.quote}"</p>
+            <cite>— {item.author}</cite>
+          </blockquote>
+        ))}
       </div>
-      
+
       <div class="text-center mt-xl">
         <a href="/testimonials" class="btn btn--primary">Read More Testimonials</a>
       </div>
@@ -223,12 +136,9 @@ import drZhangHeadshot from '../images/dr-zhang-headshot.jpg';
   <!-- CTA Section -->
   <section class="cta section section--white">
     <div class="container container--narrow text-center">
-      <h2>Schedule Your First Appointment</h2>
-      <p class="cta__text">
-        Experience the difference that 30+ years of expertise makes. Dr. Zhang looks forward 
-        to helping you on your journey to better health.
-      </p>
-      <a href="/contact" class="btn btn--primary">Book Your Session</a>
+      <h2>{cta?.data.heading}</h2>
+      <p class="cta__text">{cta?.data.text}</p>
+      <a href="/contact" class="btn btn--primary">{cta?.data.buttonText}</a>
     </div>
   </section>
 </Layout>
