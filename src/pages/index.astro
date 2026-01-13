@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
-import shrineImage from '../images/Qi_For_Life_Shrine.jpg';
-import waitingRoom from '../images/waiting-room.jpg';
 import orchidImage from '../images/Orchid.jpg';
+import waitingRoom from '../images/waiting-room.jpg';
+import shrineImage from '../images/Qi_For_Life_Shrine.jpg';
 
 // Load content from collections
 const hero = await getEntry('home', 'hero');
@@ -62,8 +62,8 @@ const iconMap: Record<string, string> = {
       </div>
       <div class="hero__portrait">
         <Image
-          src={orchidImage}
-          alt="Red orchid with Chinese calligraphy - representing Traditional Chinese Medicine"
+          src={shrineImage}
+          alt="Qi For Life Acupuncture clinic sign - Body, Mind, Spirit for good Health"
           widths={[300, 400, 600]}
           sizes="(max-width: 900px) 300px, 400px"
           width={600}
@@ -130,8 +130,8 @@ const iconMap: Record<string, string> = {
         </div>
         <div class="office__image">
           <Image
-            src={shrineImage}
-            alt="Qi For Life Acupuncture clinic sign - Body, Mind, Spirit for good Health"
+            src={orchidImage}
+            alt="Red orchid with Chinese calligraphy - representing Traditional Chinese Medicine"
             widths={[400, 600, 800]}
             sizes="(max-width: 900px) 100vw, 50vw"
             width={800}
