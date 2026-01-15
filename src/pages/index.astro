@@ -387,12 +387,19 @@ const iconMap: Record<string, string> = {
       max-width: 340px;
     }
 
+    .hero__trust-strip {
+      padding: var(--space-xs) 0;
+    }
+
     .hero__trust-strip .hero__badges {
-      gap: var(--space-md);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+      justify-items: center;
     }
 
     .hero__trust-strip .hero__badge img {
-      max-height: 50px;
+      max-height: 36px;
     }
   }
   
