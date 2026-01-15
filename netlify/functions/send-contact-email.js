@@ -78,8 +78,10 @@ This form was submitted from the Qi For Life contact page.
     `;
 
     // Send email to both recipients
+    // Using Resend's onboarding domain (no DNS verification needed)
+    // Later, update 'from' to use your verified domain: 'Qi For Life <noreply@qiforlife.com>'
     const data = await resend.emails.send({
-      from: 'Qi For Life Website <noreply@qiforlife.com>',
+      from: 'Qi For Life Website <onboarding@resend.dev>',
       to: recipients,
       replyTo: formData.email,
       subject: `New Appointment Request from ${formData.firstName} ${formData.lastName}`,
