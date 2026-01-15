@@ -1,4 +1,8 @@
 ---
+import externalVerificationBadge from '../images/external_verification.php.gif';
+import chServiceMark from '../images/CH Service Mark With Designation - Transparent.png';
+import acServiceMark from '../images/AC Service Mark With Designation - Transparent.png';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -61,12 +65,62 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
   </div>
-  
+
+  <div class="footer__badges">
+    <div class="container">
+      <h4 class="footer__badges-heading">Accreditations & Certifications</h4>
+      <div class="footer__badges-grid">
+        <a
+          href="http://www.bbb.org/nashville/business-reviews/acupuncturists/qi-for-life-acupuncture-clinic-plc-in-brentwood-tn-37136801#bbbseal"
+          title="QI for Life Acupuncture Clinic, PLC is a BBB Accredited Acupuncturist in Brentwood, TN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer__badge"
+        >
+          <img
+            src="http://seal-nashville.bbb.org/logo/ruvtbum/qi-for-life-acupuncture-clinic-plc-37136801.png"
+            alt="QI for Life Acupuncture Clinic, PLC is a BBB Accredited Acupuncturist in Brentwood, TN"
+            width="60"
+            height="108"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://www.healthprofs.com/us/acupuncturists/qi-for-life-acupuncture-clinic-plc-brentwood-tn/518172"
+          title="Qi For Life Acupuncture Clinic, PLC on HealthProfs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer__badge"
+        >
+          <img
+            src={externalVerificationBadge.src}
+            alt="External Verification Badge"
+            loading="lazy"
+          />
+        </a>
+        <div class="footer__badge">
+          <img
+            src={chServiceMark.src}
+            alt="CH Service Mark Designation"
+            loading="lazy"
+          />
+        </div>
+        <div class="footer__badge">
+          <img
+            src={acServiceMark.src}
+            alt="AC Service Mark Designation"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer__bottom">
     <div class="container">
       <p>&copy; {currentYear} Qi For Life Acupuncture. All rights reserved.</p>
       <p class="footer__blog-link">
-        Learn more about Traditional Chinese Medicine at 
+        Learn more about Traditional Chinese Medicine at
         <a href="http://thebesthealthjourney.com" target="_blank" rel="noopener noreferrer">
           The Best Health Journey
         </a>
@@ -206,21 +260,66 @@ const currentYear = new Date().getFullYear();
     flex-wrap: wrap;
     gap: var(--space-sm);
   }
-  
+
   .footer__bottom p {
     font-size: 0.875rem;
     color: rgba(250, 248, 245, 0.6);
     margin: 0;
   }
-  
+
   .footer__blog-link a {
     color: var(--color-gold-light);
   }
-  
+
   .footer__blog-link a:hover {
     color: var(--color-gold);
   }
-  
+
+  /* Trust Badges Section */
+  .footer__badges {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid rgba(250, 248, 245, 0.1);
+  }
+
+  .footer__badges-heading {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .footer__badges-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .footer__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast);
+  }
+
+  .footer__badge img {
+    height: auto;
+    max-height: 80px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+  }
+
+  a.footer__badge:hover {
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 1024px) {
     .footer__grid {
       grid-template-columns: 1fr 1fr;
@@ -233,7 +332,16 @@ const currentYear = new Date().getFullYear();
       grid-template-columns: 1fr;
       gap: var(--space-xl);
     }
-    
+
+    .footer__badges-grid {
+      gap: var(--space-md);
+    }
+
+    .footer__badge img {
+      max-height: 60px;
+      max-width: 90px;
+    }
+
     .footer__bottom .container {
       flex-direction: column;
       text-align: center;

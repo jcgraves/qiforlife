@@ -5,6 +5,9 @@ import { getEntry } from 'astro:content';
 import orchidImage from '../images/Orchid.jpg';
 import waitingRoom from '../images/waiting-room.jpg';
 import shrineImage from '../images/Qi_For_Life_Shrine.jpg';
+import externalVerificationBadge from '../images/external_verification.php.gif';
+import chServiceMark from '../images/CH Service Mark With Designation - Transparent.png';
+import acServiceMark from '../images/AC Service Mark With Designation - Transparent.png';
 
 // Load content from collections
 const hero = await getEntry('home', 'hero');
@@ -54,7 +57,7 @@ const iconMap: Record<string, string> = {
       <div class="hero__text">
         <span class="hero__credentials">{hero?.data.credentials}</span>
         <h1 class="hero__title">{hero?.data.title}</h1>
-        <p class="hero__subtitle">{hero?.data.subtitle}</p>
+        <p class="hero__quote">{hero?.data.subtitle}</p>
         <div class="hero__actions">
           <a href={hero?.data.primaryButtonLink} class="btn btn--primary">{hero?.data.primaryButtonText}</a>
           <a href={hero?.data.secondaryButtonLink} class="btn btn--secondary">{hero?.data.secondaryButtonText}</a>
@@ -73,6 +76,52 @@ const iconMap: Record<string, string> = {
           format="webp"
           quality={80}
         />
+      </div>
+    </div>
+    <div class="hero__trust-strip">
+      <div class="container">
+        <div class="hero__badges">
+          <a
+            href="http://www.bbb.org/nashville/business-reviews/acupuncturists/qi-for-life-acupuncture-clinic-plc-in-brentwood-tn-37136801#bbbseal"
+            title="QI for Life Acupuncture Clinic, PLC is a BBB Accredited Acupuncturist in Brentwood, TN"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero__badge"
+          >
+            <img
+              src="http://seal-nashville.bbb.org/logo/ruvtbum/qi-for-life-acupuncture-clinic-plc-37136801.png"
+              alt="BBB Accredited Business"
+              loading="eager"
+            />
+          </a>
+          <a
+            href="https://www.healthprofs.com/us/acupuncturists/qi-for-life-acupuncture-clinic-plc-brentwood-tn/518172"
+            title="Qi For Life Acupuncture Clinic, PLC on HealthProfs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero__badge"
+          >
+            <img
+              src={externalVerificationBadge.src}
+              alt="HealthProfs Verified"
+              loading="eager"
+            />
+          </a>
+          <div class="hero__badge">
+            <img
+              src={chServiceMark.src}
+              alt="CH Service Mark Designation"
+              loading="eager"
+            />
+          </div>
+          <div class="hero__badge">
+            <img
+              src={acServiceMark.src}
+              alt="AC Service Mark Designation"
+              loading="eager"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -219,17 +268,8 @@ const iconMap: Record<string, string> = {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2xl);
     align-items: center;
-    padding-top: var(--space-3xl);
-    padding-bottom: var(--space-3xl);
-  }
-  
-  .hero__credentials {
-    display: inline-block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: var(--color-gold);
-    margin-bottom: var(--space-sm);
+    padding-top: var(--space-2xl);
+    padding-bottom: calc(var(--space-3xl) + 70px);
   }
   
   .hero__title {
@@ -238,8 +278,17 @@ const iconMap: Record<string, string> = {
     margin-bottom: var(--space-md);
     line-height: 1.1;
   }
-  
-  .hero__subtitle {
+
+  .hero__credentials {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__quote {
     font-size: 1.25rem;
     color: rgba(250, 248, 245, 0.9);
     line-height: 1.7;
@@ -269,33 +318,81 @@ const iconMap: Record<string, string> = {
   }
   
   .hero__portrait img {
-    max-width: 400px;
+    max-width: 480px;
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   }
-  
+
+  .hero__trust-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(44, 62, 45, 0.5);
+    backdrop-filter: blur(4px);
+    padding: var(--space-xs) 0;
+    border-top: 1px solid rgba(196, 169, 98, 0.3);
+  }
+
+  .hero__trust-strip .hero__badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .hero__trust-strip .hero__badge {
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .hero__trust-strip a.hero__badge:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .hero__trust-strip .hero__badge img {
+    height: auto;
+    max-height: 70px;
+    width: auto;
+    filter: brightness(1.1);
+  }
+
   @media (max-width: 900px) {
     .hero__content {
       grid-template-columns: 1fr;
       text-align: center;
+      padding-bottom: calc(var(--space-2xl) + 50px);
     }
-    
-    .hero__subtitle {
+
+    .hero__quote {
       margin-left: auto;
       margin-right: auto;
     }
-    
+
     .hero__actions {
       justify-content: center;
     }
-    
+
     .hero__portrait {
       order: -1;
     }
-    
+
     .hero__portrait img {
-      max-width: 300px;
+      max-width: 340px;
+    }
+
+    .hero__trust-strip .hero__badges {
+      gap: var(--space-md);
+    }
+
+    .hero__trust-strip .hero__badge img {
+      max-height: 50px;
     }
   }
   
@@ -432,7 +529,7 @@ const iconMap: Record<string, string> = {
     max-width: 600px;
     margin: var(--space-md) auto var(--space-xl);
   }
-  
+
   .cta__actions {
     display: flex;
     justify-content: center;
