@@ -77,11 +77,11 @@ const business = await getEntry('settings', 'business');
           <div class="divider divider--left"></div>
           <p class="contact-form__intro">{formContent?.data.introText}</p>
 
-          <form class="contact-form" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="appointment" />
+          <form class="contact-form" name="appointment" method="POST" action="/.netlify/functions/send-contact-email">
             <p class="hidden" style="display: none;">
               <label>Don't fill this out if you're human: <input name="bot-field" /></label>
             </p>
+            <div id="form-status" class="form-status" style="display: none;"></div>
 
             <div class="form-row">
               <div class="form-group">
@@ -385,4 +385,79 @@ const business = await getEntry('settings', 'business');
       grid-column: span 1;
     }
   }
+
+  /* Form Status Messages */
+  .form-status {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .form-status.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .form-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form') as HTMLFormElement;
+    const statusDiv = document.getElementById('form-status');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Hide any previous status messages
+        if (statusDiv) {
+          statusDiv.style.display = 'none';
+          statusDiv.className = 'form-status';
+        }
+
+        // Get form data
+        const formData = new FormData(form);
+        const urlEncodedData = new URLSearchParams(formData as any);
+
+        try {
+          const response = await fetch('/.netlify/functions/send-contact-email', {
+            method: 'POST',
+            body: urlEncodedData,
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            // Show success message
+            if (statusDiv) {
+              statusDiv.textContent = 'Thank you! Your appointment request has been sent. We\'ll contact you soon.';
+              statusDiv.className = 'form-status success';
+              statusDiv.style.display = 'block';
+            }
+            // Reset form
+            form.reset();
+            // Scroll to status message
+            statusDiv?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            throw new Error(result.error || 'Failed to send message');
+          }
+        } catch (error) {
+          // Show error message
+          if (statusDiv) {
+            statusDiv.textContent = 'Sorry, there was an error sending your message. Please try calling us directly or send an email.';
+            statusDiv.className = 'form-status error';
+            statusDiv.style.display = 'block';
+          }
+          console.error('Form submission error:', error);
+        }
+      });
+    }
+  });
+</script>
