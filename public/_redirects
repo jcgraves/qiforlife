@@ -1,0 +1,5 @@
+# Redirect old domain to primary domain
+https://qiforlifeacupuncture.com/* https://qiforlife.com/:splat 301!
+https://www.qiforlifeacupuncture.com/* https://qiforlife.com/:splat 301!
+http://qiforlifeacupuncture.com/* https://qiforlife.com/:splat 301!
+http://www.qiforlifeacupuncture.com/* https://qiforlife.com/:splat 301!
