@@ -8,6 +8,7 @@ import shrineImage from '../images/Qi_For_Life_Shrine.jpg';
 import externalVerificationBadge from '../images/external_verification.php.gif';
 import chServiceMark from '../images/CH Service Mark With Designation - Transparent.png';
 import acServiceMark from '../images/AC Service Mark With Designation - Transparent.png';
+import businessRateAward from '../images/award-plaque-BR540244.PNG';
 
 // Load content from collections
 const hero = await getEntry('home', 'hero');
@@ -108,17 +109,39 @@ const iconMap: Record<string, string> = {
             />
           </a>
           <div class="hero__badge">
-            <img
-              src={chServiceMark.src}
+            <Image
+              src={chServiceMark}
               alt="CH Service Mark Designation"
+              widths={[36, 70, 100]}
+              sizes="(max-width: 900px) 36px, 70px"
+              height={70}
               loading="eager"
+              format="webp"
+              quality={85}
             />
           </div>
           <div class="hero__badge">
-            <img
-              src={acServiceMark.src}
+            <Image
+              src={acServiceMark}
               alt="AC Service Mark Designation"
+              widths={[36, 70, 100]}
+              sizes="(max-width: 900px) 36px, 70px"
+              height={70}
               loading="eager"
+              format="webp"
+              quality={85}
+            />
+          </div>
+          <div class="hero__badge">
+            <Image
+              src={businessRateAward}
+              alt="Top 3 BusinessRate 2025 - Acupuncture Clinic in Brentwood, Tennessee"
+              widths={[56, 80, 120]}
+              sizes="(max-width: 900px) 56px, 80px"
+              height={80}
+              loading="eager"
+              format="webp"
+              quality={85}
             />
           </div>
         </div>
@@ -393,7 +416,7 @@ const iconMap: Record<string, string> = {
 
     .hero__trust-strip .hero__badges {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: var(--space-sm);
       justify-items: center;
     }
