@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import externalVerificationBadge from '../images/external_verification.php.gif';
 import chServiceMark from '../images/CH Service Mark With Designation - Transparent.png';
 import acServiceMark from '../images/AC Service Mark With Designation - Transparent.png';
+import businessRateAward from '../images/award-plaque-BR540244.PNG';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -99,17 +101,39 @@ const currentYear = new Date().getFullYear();
           />
         </a>
         <div class="footer__badge">
-          <img
-            src={chServiceMark.src}
+          <Image
+            src={chServiceMark}
             alt="CH Service Mark Designation"
+            widths={[60, 80, 120]}
+            sizes="(max-width: 640px) 60px, 80px"
+            height={80}
             loading="lazy"
+            format="webp"
+            quality={85}
           />
         </div>
         <div class="footer__badge">
-          <img
-            src={acServiceMark.src}
+          <Image
+            src={acServiceMark}
             alt="AC Service Mark Designation"
+            widths={[60, 80, 120]}
+            sizes="(max-width: 640px) 60px, 80px"
+            height={80}
             loading="lazy"
+            format="webp"
+            quality={85}
+          />
+        </div>
+        <div class="footer__badge">
+          <Image
+            src={businessRateAward}
+            alt="Top 3 BusinessRate 2025 - Acupuncture Clinic in Brentwood, Tennessee"
+            widths={[60, 80, 120]}
+            sizes="(max-width: 640px) 60px, 80px"
+            height={80}
+            loading="lazy"
+            format="webp"
+            quality={85}
           />
         </div>
       </div>
